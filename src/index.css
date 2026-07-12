@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+@theme {
+  --branco: #fefeff;
+  --azul: #4392f1;
+  --vermelho: #dc493a;
+  --azul-claro: #e7f0ff;
+}
