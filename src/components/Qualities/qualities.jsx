@@ -7,7 +7,7 @@ export default function Qualities({ img, alt, title, text }) {
 
       <div className="mt-2 flex-1 min-w-0 pr-8">
         <h1 className="text-azul text-xl font-bold">{title}</h1>
-        <p className="text-sm font-semibold break-words">{text}</p>
+        <p className="text-sm font-semibold wrap-break-word">{text}</p>
       </div>
     </section>
   );
