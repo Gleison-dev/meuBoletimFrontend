@@ -1,3 +1,6 @@
+import Qualities from "../../components/Qualities/qualities";
+import icon_light from "../../assets/icon_light.svg";
+
 export default function Home() {
   return (
     <>
@@ -18,6 +21,13 @@ export default function Home() {
           <button className="w-85 h-20 text-xl rounded-2xl cursor-pointer bg-azul text-branco">
             SAIBA MAIS
           </button>
+        </div>
+        <div className="flex justify-center rounded-md w-85 h-82 mt-8 bg-azul-claro">
+          <Qualities
+            img={icon_light}
+            title="Fácil"
+            text="Organize suas notas de forma simples e rápida."
+          />
         </div>
       </section>
     </>
