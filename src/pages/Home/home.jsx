@@ -1,5 +1,8 @@
 import Qualities from "../../components/Qualities/qualities";
 import icon_light from "../../assets/icon_light.svg";
+import icon_ray from "../../assets/icon_ray.svg";
+import icon_lock from "../../assets/icon_lock.svg";
+import "./styles.css"
 
 export default function Home() {
   return (
@@ -22,11 +25,21 @@ export default function Home() {
             SAIBA MAIS
           </button>
         </div>
-        <div className="flex justify-center rounded-md w-85 h-82 mt-8 bg-azul-claro">
+        <div className="main-quality flex flex-col justify-center items-center rounded-md w-85 mt-8 bg-azul-claro">
           <Qualities
             img={icon_light}
             title="Fácil"
             text="Organize suas notas de forma simples e rápida."
+          />
+          <Qualities
+            img={icon_ray}
+            title="Eficiente"
+            text="Organização e agilidade em um só lugar."
+          />
+          <Qualities
+            img={icon_lock}
+            title="Seguro"
+            text="Seus dados protegidos com segurança."
           />
         </div>
       </section>
