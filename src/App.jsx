@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/home";
 import Header from "./components/Header/header";
 import LoginStudent from "./pages/LoginStudent/loginStudent";
+import LoginTeacher from "./pages/LoginTeacher/loginTeacher";
 
 export default function App() {
   return (
@@ -10,6 +11,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/loginStudent" element={<LoginStudent />}></Route>
+        <Route path="/loginTeacher" element={<LoginTeacher />}></Route>
       </Routes>
     </>
   );
