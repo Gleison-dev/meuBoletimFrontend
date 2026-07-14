@@ -1,7 +1,7 @@
 import Input from "../../components/Input/input";
 import "./styles.css";
 
-export default function Login() {
+export default function LoginStudent() {
   return (
     <>
       <section className="flex justify-center mt-10">
