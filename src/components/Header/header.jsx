@@ -12,7 +12,7 @@ export default function Header() {
         </div>
         <div>
           <NavLink to="/loginStudent">
-            <button className="w-30 h-10 rounded-lg text-lg cursor-pointer bg-azul text-branco">
+            <button className="w-30 h-10 rounded-lg text-lg cursor-pointer bg-azul text-branco hover:bg-blue-600">
               Entrar
             </button>
           </NavLink>
