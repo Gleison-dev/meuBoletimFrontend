@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import Input from "../../components/Input/input";
 import "./styles.css";
 
@@ -10,7 +11,7 @@ export default function LoginStudent() {
             <h1 className="text-xl">
               <strong>LOGIN</strong>
             </h1>
-            <p>Faça seu login abaixo.</p>
+            <p>Faça seu login de aluno(a) abaixo.</p>
           </div>
           <form className="flex flex-col gap-3 mt-5">
             <div>
@@ -32,6 +33,15 @@ export default function LoginStudent() {
             <button className="w-60 h-14 rounded-4xl cursor-pointer text-branco bg-azul hover:bg-blue-600">
               <strong>ACESSAR</strong>
             </button>
+          </div>
+          <hr className="w-60 mt-5 mb-5 border-azul" />
+          <div>
+            <p>
+              É um professor(a)?{" "}
+              <NavLink to="/loginTeacher">
+                <span className="text-azul underline">Clique aqui.</span>
+              </NavLink>
+            </p>
           </div>
         </div>
       </section>
