@@ -1,18 +1,22 @@
 import { NavLink } from "react-router-dom";
 import Input from "../../components/Input/input";
 import "./styles.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function LoginStudent() {
+  const { login } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = async () => {
+  async function handleSubmit(e) {
+    e.preventDefault();
     try {
+      const response = await login(email, password);
     } catch (error) {
       return console.error("Não foi possível enviar:", error);
     }
-  };
+  }
 
   return (
     <>
@@ -24,7 +28,7 @@ export default function LoginStudent() {
             </h1>
             <p>Faça seu login de aluno(a) abaixo.</p>
           </div>
-          <form className="flex flex-col gap-3 mt-5">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-3 mt-5">
             <div>
               <label>
                 <strong>E-mail:</strong>
@@ -49,12 +53,15 @@ export default function LoginStudent() {
                 placeholder="Digite sua senha"
               />
             </div>
+            <div className="mt-5">
+              <button
+                type="submit"
+                className="w-60 h-14 rounded-4xl cursor-pointer text-branco bg-azul hover:bg-blue-600"
+              >
+                <strong>ACESSAR</strong>
+              </button>
+            </div>
           </form>
-          <div className="mt-5">
-            <button className="w-60 h-14 rounded-4xl cursor-pointer text-branco bg-azul hover:bg-blue-600">
-              <strong>ACESSAR</strong>
-            </button>
-          </div>
           <hr className="w-60 mt-5 mb-5 border-azul" />
           <div>
             <p>
