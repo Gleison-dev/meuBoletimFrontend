@@ -1,8 +1,22 @@
 import { NavLink } from "react-router-dom";
 import Input from "../../components/Input/input";
 import "./styles.css";
+import { AuthContext } from "../../context/AuthContext";
+import { useContext, useState } from "react";
 
 export default function LoginTeacher() {
+  const { login } = useContext(AuthContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      const response = await login(email, password);
+    } catch (error) {
+      return console.error("Não foi possível enviar:", error);
+    }
+  }
   return (
     <>
       <section className="flex justify-center mt-10">
@@ -19,14 +33,24 @@ export default function LoginTeacher() {
                 <strong>E-mail:</strong>
               </label>{" "}
               <br />
-              <Input type="email" placeholder="Insira o seu e-mail" />
+              <Input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Insira o seu e-mail"
+              />
             </div>
             <div>
               <label>
                 <strong>Senha:</strong>
               </label>{" "}
               <br />
-              <Input type="password" placeholder="Digite sua senha" />
+              <Input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Digite sua senha"
+              />
             </div>
           </form>
           <div className="mt-5">
