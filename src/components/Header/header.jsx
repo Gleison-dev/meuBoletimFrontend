@@ -5,10 +5,14 @@ export default function Header() {
     <>
       <section className="h-25 flex justify-between items-center shadow px-10 bg-azul-claro">
         <div>
-          <h1 className="text-lg">
-            <span className="font-semibold">Meu</span> <br />{" "}
-            <span className="text-azul">Boletim</span>
-          </h1>
+          <NavLink to="/">
+            <h1 className="text-xl">
+              <span className="font-semibold">Meu</span> <br />{" "}
+              <span className="text-azul">
+                <strong>Boletim</strong>
+              </span>
+            </h1>
+          </NavLink>
         </div>
         <div>
           <NavLink to="/loginStudent">
