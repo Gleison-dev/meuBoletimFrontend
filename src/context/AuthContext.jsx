@@ -1,7 +1,17 @@
 import { createContext, useState } from "react";
+import isTokenExpired from "../utils/tokenUtils";
 import { api } from "../services/api";
 
 export const AuthContext = createContext();
+
+function getValidToken() {
+  const token = localStorage.getItem("token");
+  if (token && isTokenExpired(token)) {
+    localStorage.removeItem("token");
+    return null;
+  }
+  return token;
+}
 
 export function AuthProvider({ children }) {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
