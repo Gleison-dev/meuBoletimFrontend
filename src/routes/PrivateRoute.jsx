@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { Navigate, Outlet } from "react-router-dom";
+import isTokenExpired from "../utils/tokenUtils";
 
 export function PrivateRoute() {
-  const { token } = useContext(AuthContext);
+  const { token, logout } = useContext(AuthContext);
 
-  if (!token) {
+  if (!token || isTokenExpired(token)) {
+    logout();
     return <Navigate to="/login" replace />;
   }
 
