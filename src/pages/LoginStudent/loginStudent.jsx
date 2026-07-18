@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, replace, useNavigate } from "react-router-dom";
 import Input from "../../components/Input/input";
 import "./styles.css";
 import { useContext, useState } from "react";
@@ -6,15 +6,17 @@ import { AuthContext } from "../../context/AuthContext";
 
 export default function LoginStudent() {
   const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault();
-    try {
-      const response = await login(email, password);
-    } catch (error) {
-      return console.error("Não foi possível enviar:", error);
+    const sucess = await login(email, password);
+    if (sucess) {
+      navigate("/dashboardStudent", { replace: true });
+    } else {
+      console.error("Não foi possível fazer login.");
     }
   }
 
