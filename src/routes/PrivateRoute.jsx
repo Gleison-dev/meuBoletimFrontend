@@ -8,7 +8,7 @@ export function PrivateRoute() {
 
   if (!token || isTokenExpired(token)) {
     logout();
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/loginStudent" replace />;
   }
 
   return <Outlet />;
