@@ -13,7 +13,12 @@ export default function LoginStudent() {
   async function handleSubmit(e) {
     e.preventDefault();
     const success = await login(email, password);
-    console.log(success);
+
+    if (success) {
+      navigate("/dashboardStudent", { replace: true });
+    } else {
+      console.log(success.message);
+    }
   }
 
   return (
