@@ -32,7 +32,7 @@ export function AuthProvider({ children }) {
       return { success: true };
     } catch (error) {
       const message = error.response?.data?.message || "Erro ao fazer login!";
-      return { succes: false };
+      return { success: false };
     }
   }
 
