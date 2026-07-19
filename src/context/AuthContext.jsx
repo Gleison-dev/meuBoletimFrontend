@@ -29,9 +29,10 @@ export function AuthProvider({ children }) {
 
       setToken(token);
 
-      return true;
+      return { success: true };
     } catch (error) {
-      return false;
+      const message = error.response?.data?.message || "Erro ao fazer login!";
+      return { succes: false };
     }
   }
 

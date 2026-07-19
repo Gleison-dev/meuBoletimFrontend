@@ -12,12 +12,8 @@ export default function LoginStudent() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const sucess = await login(email, password);
-    if (sucess) {
-      navigate("/dashboardStudent", { replace: true });
-    } else {
-      console.error("Não foi possível fazer login.");
-    }
+    const success = await login(email, password);
+    console.log(success);
   }
 
   return (
