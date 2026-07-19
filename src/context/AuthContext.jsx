@@ -1,6 +1,8 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import isTokenExpired from "../utils/tokenUtils";
 import { api } from "../services/api";
+import { Navigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 export const AuthContext = createContext();
 
@@ -15,6 +17,7 @@ function getValidToken() {
 
 export function AuthProvider({ children }) {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
+  const role = token ? jwtDecode(token).role : null;
 
   async function login(email, password) {
     try {
@@ -41,7 +44,7 @@ export function AuthProvider({ children }) {
     setToken(null);
   }
   return (
-    <AuthContext.Provider value={{ token, login, logout }}>
+    <AuthContext.Provider value={{ token, login, role, logout }}>
       {children}
     </AuthContext.Provider>
   );
