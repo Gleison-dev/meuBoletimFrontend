@@ -12,12 +12,12 @@ export default function LoginStudent() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const success = await login(email, password);
+    const { success, message } = await login(email, password);
 
     if (success) {
       navigate("/dashboardStudent", { replace: true });
     } else {
-      console.log(success.message);
+      console.log(message);
     }
   }
 
