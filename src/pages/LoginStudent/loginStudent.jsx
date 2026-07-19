@@ -8,6 +8,7 @@ export default function LoginStudent() {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
+  const [messageError, setMessageError] = useState("");
   const [password, setPassword] = useState("");
 
   async function handleSubmit(e) {
@@ -17,7 +18,10 @@ export default function LoginStudent() {
     if (success) {
       navigate("/dashboardStudent", { replace: true });
     } else {
-      console.log(message);
+      setMessageError(message);
+      setTimeout(() => {
+        setMessageError("");
+      }, 3000);
     }
   }
 
@@ -64,7 +68,13 @@ export default function LoginStudent() {
                 <strong>ACESSAR</strong>
               </button>
             </div>
+            <div>
+              <p className="text-sm text-red-400">
+                <strong>{messageError}</strong>
+              </p>
+            </div>
           </form>
+
           <hr className="w-60 mt-5 mb-5 border-azul" />
           <div>
             <p>

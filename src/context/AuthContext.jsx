@@ -23,7 +23,7 @@ export function AuthProvider({ children }) {
         password,
       });
 
-      const token = response.data.user;
+      const token = response.data.token;
 
       localStorage.setItem("token", token);
 
