@@ -10,14 +10,18 @@ export default function LoginStudent() {
   const [email, setEmail] = useState("");
   const [messageError, setMessageError] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e) {
+    setLoading(true);
     e.preventDefault();
     const { success, message } = await login(email, password);
 
     if (success) {
       navigate("/dashboardStudent", { replace: true });
+      setLoading(false);
     } else {
+      setLoading(false);
       setMessageError(message);
       setTimeout(() => {
         setMessageError("");
@@ -61,12 +65,22 @@ export default function LoginStudent() {
               />
             </div>
             <div className="mt-5">
-              <button
-                type="submit"
-                className="w-60 h-14 rounded-4xl cursor-pointer text-branco bg-azul hover:bg-blue-600"
-              >
-                <strong>ACESSAR</strong>
-              </button>
+              {loading ? (
+                <button
+                  type="submit"
+                  disabled
+                  className="w-60 h-14 rounded-4xl text-branco bg-gray-500"
+                >
+                  <strong>ACESSANDO</strong>
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  className="w-60 h-14 rounded-4xl cursor-pointer text-branco bg-azul hover:bg-blue-600"
+                >
+                  <strong>ACESSAR</strong>
+                </button>
+              )}
             </div>
             <div>
               <p className="text-sm text-red-400">
