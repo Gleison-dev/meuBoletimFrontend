@@ -1,4 +1,4 @@
-import { NavLink, replace, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Input from "../../components/Input/input";
 import "./styles.css";
 import { useContext, useState } from "react";

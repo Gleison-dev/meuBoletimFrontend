@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import icon_user from "../../assets/icon_user.svg";
 import { isTokenExpired } from "../../utils/tokenUtils";
+import { DropdownMenuBasic } from "../ui/dropdown";
 
 export default function Header() {
   const { token } = useContext(AuthContext);
@@ -31,11 +32,7 @@ export default function Header() {
         </div>
         <div>
           {isAuthenticated ? (
-            <img
-              className="w-15 h-15 cursor-pointer"
-              src={icon_user}
-              alt="Ícone de usuário"
-            />
+            <DropdownMenuBasic />
           ) : (
             <NavLink to="/loginStudent">
               <button className="w-30 h-10 rounded-lg text-lg cursor-pointer bg-azul text-branco hover:bg-blue-600">
