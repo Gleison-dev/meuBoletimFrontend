@@ -1,6 +1,6 @@
 import { jwtDecode } from "jwt-decode";
 
-export default function isTokenExpired(token) {
+export function isTokenExpired(token) {
   if (!token) return true;
 
   try {

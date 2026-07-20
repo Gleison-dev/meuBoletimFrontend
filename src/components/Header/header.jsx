@@ -2,9 +2,11 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import icon_user from "../../assets/icon_user.svg";
+import { isTokenExpired } from "../../utils/tokenUtils";
 
 export default function Header() {
   const { token } = useContext(AuthContext);
+  const isAuthenticated = token && !isTokenExpired(token);
   return (
     <>
       <section className="h-25 flex justify-between items-center shadow px-10 bg-azul-claro">
@@ -28,7 +30,7 @@ export default function Header() {
           )}
         </div>
         <div>
-          {token ? (
+          {isAuthenticated ? (
             <img
               className="w-15 h-15 cursor-pointer"
               src={icon_user}

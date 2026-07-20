@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import isTokenExpired from "../utils/tokenUtils";
+import { isTokenExpired } from "../utils/tokenUtils";
 import { api } from "../services/api";
 import { Navigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
