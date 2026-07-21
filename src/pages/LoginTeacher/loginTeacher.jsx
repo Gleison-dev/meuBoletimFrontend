@@ -11,10 +11,9 @@ export default function LoginTeacher() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    try {
-      const response = await login(email, password);
-    } catch (error) {
-      return console.error("Não foi possível enviar:", error);
+    const { sucess, message } = await login(email, password);
+    if(sucess) {
+      
     }
   }
   return (
