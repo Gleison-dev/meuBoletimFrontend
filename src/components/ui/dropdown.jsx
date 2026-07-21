@@ -17,7 +17,7 @@ export function DropdownMenuBasic() {
   const { user, logout } = useContext(AuthContext);
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger render={<Button className="w-25 h-15 text-lg" variant="outline">kkkk ▾</Button>} />
+      <DropdownMenuTrigger render={<Button className="w-25 h-15 text-lg" variant="outline">{user?.name} ▾</Button>} />
       <DropdownMenuContent>
         <DropdownMenuGroup>
           <DropdownMenuLabel>Minha conta</DropdownMenuLabel>
