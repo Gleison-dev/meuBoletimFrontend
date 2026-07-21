@@ -35,8 +35,8 @@ export default function Header() {
             <DropdownMenuBasic />
           ) : (
             <NavLink to="/loginStudent">
-              <button className="w-30 h-10 rounded-lg text-lg cursor-pointer bg-azul text-branco hover:bg-blue-600">
-                Entrar
+              <button className="w-30 h-15 rounded-lg text-xl cursor-pointer bg-azul text-branco hover:bg-blue-600">
+                <strong>Entrar</strong>
               </button>
             </NavLink>
           )}
