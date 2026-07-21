@@ -4,6 +4,7 @@ import Header from "./components/Header/header";
 import LoginStudent from "./pages/LoginStudent/loginStudent";
 import LoginTeacher from "./pages/LoginTeacher/loginTeacher";
 import DashboardStudent from "./pages/DashboardStudent/dashboardStudent";
+import DashboardTeacher from "./pages/DashBoardTeacher/dashboardTeacher";
 import { PrivateRoute } from "./routes/PrivateRoute";
 import { PublicRoute } from "./routes/PublicRoute";
 
@@ -24,7 +25,7 @@ export default function App() {
           ></Route>
           <Route
             path="/dashboardTeacher"
-            element={<DashboardStudent />}
+            element={<DashboardTeacher />}
           ></Route>
         </Route>
       </Routes>
