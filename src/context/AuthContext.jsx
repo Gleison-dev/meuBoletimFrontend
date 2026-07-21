@@ -28,13 +28,13 @@ export function AuthProvider({ children }) {
         password,
       });
 
-      const token = response.data.token;
+      const { token, role } = response.data.user;
 
       localStorage.setItem("token", token);
 
       setToken(token);
 
-      return { success: true };
+      return { success: true, role: role };
     } catch (error) {
       const message = error.response?.data?.message || "Erro ao fazer login!";
       return { success: false, message };

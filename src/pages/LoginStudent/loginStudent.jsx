@@ -13,20 +13,27 @@ export default function LoginStudent() {
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e) {
-    setLoading(true);
     e.preventDefault();
-    const { success, message } = await login(email, password);
+    setLoading(true);
+
+    const { success, role, message } = await login(email, password);
 
     if (success) {
-      navigate("/dashboardStudent", { replace: true });
-      setLoading(false);
+      switch (role) {
+        case "ALUNO":
+          navigate("/dashboardStudent", { replace: true });
+          break;
+        case "PROFESSOR":
+          navigate("/dashboardTeacher", { replace: true });
+          break;
+        default:
+          navigate("/", { replace: true });
+      }
     } else {
-      setLoading(false);
       setMessageError(message);
-      setTimeout(() => {
-        setMessageError("");
-      }, 3000);
+      setTimeout(() => setMessageError(""), 3000);
     }
+    setLoading(false);
   }
 
   return (
