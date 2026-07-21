@@ -71,7 +71,7 @@ export default function LoginStudent() {
                   disabled
                   className="w-60 h-14 rounded-4xl text-branco bg-gray-500"
                 >
-                  <strong>ACESSANDO</strong>
+                  <strong>ACESSANDO...</strong>
                 </button>
               ) : (
                 <button
