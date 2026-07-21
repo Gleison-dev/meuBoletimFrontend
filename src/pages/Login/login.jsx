@@ -38,13 +38,13 @@ export default function Login() {
 
   return (
     <>
-      <section className="flex justify-center mt-10">
-        <div className="pl-20 w-96 rounded-xl main-login flex flex-col justify-center bg-azul-claro">
+      <section className="flex justify-center  mt-10">
+        <div className="w-96 rounded-xl main-login flex flex-col items-center justify-center bg-azul-claro">
           <div>
             <h1 className="text-xl">
               <strong>LOGIN</strong>
             </h1>
-            <p>Faça seu login de aluno(a) abaixo.</p>
+            <p>Acesse sua conta pelo login abaixo</p>
           </div>
           <form onSubmit={handleSubmit} className="flex flex-col gap-3 mt-5">
             <div>
@@ -89,20 +89,10 @@ export default function Login() {
                 </button>
               )}
             </div>
-            <div>
-              <p className="text-sm text-red-400">
-                <strong>{messageError}</strong>
-              </p>
-            </div>
           </form>
-
-          <hr className="w-60 mt-5 mb-5 border-azul" />
-          <div>
-            <p>
-              É um professor(a)?{" "}
-              <NavLink to="/loginTeacher">
-                <span className="text-azul underline">Clique aqui.</span>
-              </NavLink>
+          <div className="mt-2">
+            <p className="text-sm text-red-400">
+              <strong>{messageError}</strong>
             </p>
           </div>
         </div>
