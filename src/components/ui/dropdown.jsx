@@ -14,10 +14,10 @@ import { AuthContext } from "@/context/AuthContext";
 import { useContext } from "react";
 
 export function DropdownMenuBasic() {
-  const { logout } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger render={<Button className="w-25 h-15 text-lg" variant="outline">Gleison ▾</Button>} />
+      <DropdownMenuTrigger render={<Button className="w-25 h-15 text-lg" variant="outline">kkkk ▾</Button>} />
       <DropdownMenuContent>
         <DropdownMenuGroup>
           <DropdownMenuLabel>Minha conta</DropdownMenuLabel>
