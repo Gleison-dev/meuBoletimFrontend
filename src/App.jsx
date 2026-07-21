@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/home";
 import Header from "./components/Header/header";
-import LoginStudent from "./pages/LoginStudent/loginStudent";
+import Login from "./pages/Login/login";
 import DashboardStudent from "./pages/DashboardStudent/dashboardStudent";
 import { PrivateRoute } from "./routes/PrivateRoute";
 import { PublicRoute } from "./routes/PublicRoute";
@@ -14,7 +14,7 @@ export default function App() {
       <Routes>
         <Route element={<PublicRoute />}>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/loginStudent" element={<LoginStudent />}></Route>
+          <Route path="/login" element={<Login />}></Route>
         </Route>
         <Route element={<PrivateRoute />}>
           <Route

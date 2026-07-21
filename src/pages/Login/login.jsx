@@ -4,7 +4,7 @@ import "./styles.css";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
-export default function LoginStudent() {
+export default function Login() {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");

@@ -34,7 +34,7 @@ export default function Header() {
           {isAuthenticated ? (
             <DropdownMenuBasic />
           ) : (
-            <NavLink to="/loginStudent">
+            <NavLink to="/login">
               <button className="w-30 h-15 rounded-lg text-xl cursor-pointer bg-azul text-branco hover:bg-blue-600">
                 <strong>Entrar</strong>
               </button>
