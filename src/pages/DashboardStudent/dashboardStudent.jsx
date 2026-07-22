@@ -1,11 +1,16 @@
-export default function DashboardStudent({ name }) {
+import { TableActions } from "@/components/ui/tableActions";
+import { AuthContext } from "@/context/AuthContext";
+import { useContext } from "react";
+
+export default function DashboardStudent() {
+  const { user } = useContext(AuthContext);
   return (
     <>
       <section className="flex justify-center items-center mt-10">
         <div className="w-96 p-8 rounded-xl bg-azul-claro">
           <div>
             <h1 className="text-2xl">
-              Olá, <strong>Gleison</strong>
+              Olá, <strong>{user?.name}</strong>
             </h1>
           </div>
           <div className="flex justify-between items-center mt-5 gap-10">
@@ -23,7 +28,10 @@ export default function DashboardStudent({ name }) {
           </div>
           <div className="p-4 mt-10 rounded-xl border-2 border-azul bg-branco">
             <div>
-              <h1 className="text-xl">Minhas disciplinas</h1>
+              <h1 className="text-xl mb-3">Minhas Disciplinas</h1>
+            </div>
+            <div>
+              <TableActions />
             </div>
           </div>
         </div>
