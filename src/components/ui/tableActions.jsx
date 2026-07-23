@@ -1,13 +1,13 @@
-import { MoreHorizontalIcon } from "lucide-react"
+import { MoreHorizontalIcon } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import {
   Table,
   TableBody,
@@ -15,9 +15,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
+} from "@/components/ui/table";
 
-export function TableActions() {
+export function TableActions({ discipline, unit, note }) {
   return (
     <Table>
       <TableHeader>
@@ -29,11 +29,11 @@ export function TableActions() {
       </TableHeader>
       <TableBody>
         <TableRow>
-          <TableCell className="font-medium">Programação</TableCell>
-          <TableCell className="text-center">1ª</TableCell>
-          <TableCell className="text-center">7,5</TableCell>
+          <TableCell className="font-medium">{discipline}</TableCell>
+          <TableCell className="text-center">{unit}ª</TableCell>
+          <TableCell className="text-center">{note}</TableCell>
         </TableRow>
       </TableBody>
     </Table>
-  )
+  );
 }

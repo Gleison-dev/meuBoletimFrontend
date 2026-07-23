@@ -1,9 +1,30 @@
 import { TableActions } from "@/components/ui/tableActions";
 import { AuthContext } from "@/context/AuthContext";
-import { useContext } from "react";
+import { api } from "@/services/api";
+import { useContext, useEffect, useState } from "react";
 
 export default function DashboardStudent() {
-  const { user } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
+  const [note, setNote] = useState([]);
+
+  const handleSearchNote = async () => {
+    try {
+      const response = await api.get(`/noteByStudent?studentId=${user.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setNote(response.data.note);
+    } catch (error) {
+      const message =
+        error.response?.data?.message || "Erro ao listar as notas.";
+    }
+  };
+
+  useEffect(() => {
+    handleSearchNote();
+  }, [token]);
+
   return (
     <>
       <section className="flex justify-center items-center mt-10">
@@ -31,7 +52,9 @@ export default function DashboardStudent() {
               <h1 className="text-xl mb-3">Minhas Disciplinas</h1>
             </div>
             <div>
-              <TableActions />
+              {note.map((i) => (
+                <TableActions discipline={i.disciplina.name} unit={i.unit} note={i.note} />
+              ))}
             </div>
           </div>
         </div>
