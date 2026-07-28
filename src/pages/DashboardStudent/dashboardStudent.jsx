@@ -6,16 +6,20 @@ import { useContext, useEffect, useState } from "react";
 export default function DashboardStudent() {
   const { user, token } = useContext(AuthContext);
   const [note, setNote] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleSearchNote = async () => {
     try {
+      setLoading(true);
       const response = await api.get(`/noteByStudent?studentId=${user.id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       setNote(response.data.note);
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       const message =
         error.response?.data?.message || "Erro ao listar as notas.";
     }
@@ -23,7 +27,7 @@ export default function DashboardStudent() {
 
   useEffect(() => {
     handleSearchNote();
-  }, [token]);
+  }, [user, token]);
 
   return (
     <>
@@ -34,17 +38,12 @@ export default function DashboardStudent() {
               Olá, <strong>{user?.name}</strong>
             </h1>
           </div>
-          <div className="flex justify-between items-center mt-5 gap-10">
-            <div className="w-40 h-25 p-4 border-3 border-azul rounded-xl">
-              <h1 className="text-2xl">
-                <strong>Aprovado</strong>
-              </h1>
+          <div className="p-4 mt-10 rounded-xl border-2 border-azul bg-branco">
+            <div>
+              <h1 className="text-xl mb-3">Informações do aluno(a)</h1>
             </div>
-            <div className="w-40 h-25 flex flex-col justify-around items-center p-4 border-3 border-azul rounded-xl">
-              <h1 className="text-2xl">
-                <strong>Média</strong>
-              </h1>
-              <p className="text-2xl">9.7</p>
+            <div>
+              <h1>{user?.name}</h1>
             </div>
           </div>
           <div className="p-4 mt-10 rounded-xl border-2 border-azul bg-branco">
@@ -52,9 +51,17 @@ export default function DashboardStudent() {
               <h1 className="text-xl mb-3">Minhas Disciplinas</h1>
             </div>
             <div>
-              {note.map((i) => (
-                <TableActions discipline={i.disciplina.name} unit={i.unit} note={i.note} />
-              ))}
+              {loading ? (
+                <p>Carregando...</p>
+              ) : (
+                note.map((i) => (
+                  <TableActions
+                    discipline={i.disciplina.name}
+                    unit={i.unit}
+                    note={i.note}
+                  />
+                ))
+              )}
             </div>
           </div>
         </div>
