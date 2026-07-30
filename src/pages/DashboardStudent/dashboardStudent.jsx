@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from "react";
 export default function DashboardStudent() {
   const { user, token } = useContext(AuthContext);
   const [note, setNote] = useState([]);
+  const [studentUser, setStudentUser] = useState({});
   const [loading, setLoading] = useState(false);
 
   const handleSearchNote = async () => {
@@ -25,8 +26,26 @@ export default function DashboardStudent() {
     }
   };
 
+  const handleSearchStudent = async () => {
+    try {
+      setLoading(true);
+      const response = await api.get(`/student`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setStudentUser(response.data.student);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      const message =
+        error.response?.data?.message || "Erro ao listar as notas.";
+    }
+  };
+
   useEffect(() => {
     handleSearchNote();
+    handleSearchStudent();
   }, [user, token]);
 
   return (
@@ -35,7 +54,7 @@ export default function DashboardStudent() {
         <div className="w-96 p-8 rounded-xl bg-azul-claro">
           <div>
             <h1 className="text-2xl">
-              Olá, <strong>{user?.name}</strong>
+              Olá, <strong>{studentUser.usuario?.name}</strong>
             </h1>
           </div>
           <div className="p-4 mt-10 rounded-xl border-2 border-azul bg-branco">
@@ -43,7 +62,15 @@ export default function DashboardStudent() {
               <h1 className="text-xl mb-3">Informações do aluno(a)</h1>
             </div>
             <div>
-              <h1>{user?.name}</h1>
+              <h1>
+                <span>Nome:</span> {studentUser.usuario?.name}
+              </h1>
+              <h1>
+                <span>Turma:</span> {studentUser.turma?.name}
+              </h1>
+              <h1>
+                <span>E-mail:</span> {studentUser.usuario?.email}
+              </h1>
             </div>
           </div>
           <div className="p-4 mt-10 rounded-xl border-2 border-azul bg-branco">
