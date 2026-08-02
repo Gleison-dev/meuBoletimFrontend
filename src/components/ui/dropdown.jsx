@@ -12,20 +12,34 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { AuthContext } from "@/context/AuthContext";
 import { useContext } from "react";
+import { NavLink } from "react-router-dom";
 
 export function DropdownMenuBasic() {
   const { user, logout } = useContext(AuthContext);
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger render={<Button className="h-15 text-lg" variant="outline">{user?.name} ▾</Button>} />
+      <DropdownMenuTrigger
+        render={
+          <Button className="h-15 text-lg" variant="outline">
+            {user?.name} ▾
+          </Button>
+        }
+      />
       <DropdownMenuContent>
         <DropdownMenuGroup>
           <DropdownMenuLabel>Minha conta</DropdownMenuLabel>
-          <DropdownMenuItem>Perfil</DropdownMenuItem>
+          <NavLink to="/profile">
+            <DropdownMenuItem>Perfil</DropdownMenuItem>
+          </NavLink>
           <DropdownMenuItem>Configurações</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={logout} className="cursor-pointer text-red-600 focus:bg-red-300 focus:text-red-600">Sair</DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={logout}
+          className="cursor-pointer text-red-600 focus:bg-red-300 focus:text-red-600"
+        >
+          Sair
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
