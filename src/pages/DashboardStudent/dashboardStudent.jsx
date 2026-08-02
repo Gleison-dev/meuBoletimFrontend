@@ -2,6 +2,9 @@ import { TableActions } from "@/components/ui/tableActions";
 import { AuthContext } from "@/context/AuthContext";
 import { api } from "@/services/api";
 import { useContext, useEffect, useState } from "react";
+import icon_user from "../../assets/icon_user.svg";
+import icon_class from "../../assets/icon_class.svg";
+import icon_email from "../../assets/icon_email.svg";
 
 export default function DashboardStudent() {
   const { user, token } = useContext(AuthContext);
@@ -59,18 +62,23 @@ export default function DashboardStudent() {
           </div>
           <div className="p-4 mt-10 rounded-xl border-2 border-azul bg-branco">
             <div>
-              <h1 className="text-xl mb-3">Informações do aluno(a)</h1>
+              <h1 className="text-xl mb-3">
+                <strong>Informações do aluno(a)</strong>
+              </h1>
             </div>
             <div>
-              <h1>
-                <span>Nome:</span> {studentUser.usuario?.name}
-              </h1>
-              <h1>
-                <span>Turma:</span> {studentUser.turma?.name}
-              </h1>
-              <h1>
-                <span>E-mail:</span> {studentUser.usuario?.email}
-              </h1>
+              <div className="flex items-center gap-2">
+                <img src={icon_user} alt="Ícone de usuário" />
+                <h1>{studentUser.usuario?.name}</h1>
+              </div>
+              <div className="flex items-center gap-2">
+                <img src={icon_class} alt="Ícone de usuário" />
+                <h1>{studentUser.turma?.name}</h1>
+              </div>
+              <div className="flex items-center gap-2">
+                <img src={icon_email} alt="Ícone de usuário" />
+                <h1>{studentUser.usuario?.email}</h1>
+              </div>
             </div>
           </div>
           <div className="p-4 mt-10 rounded-xl border-2 border-azul bg-branco">
