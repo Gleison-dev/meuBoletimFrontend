@@ -10,7 +10,7 @@ export default function Header() {
   const isAuthenticated = token && !isTokenExpired(token);
   return (
     <>
-      <section className="h-25 flex justify-between items-center shadow px-10 bg-azul-claro">
+      <section className="h-25 flex justify-between items-center shadow px-10 bg-azul-claro rounded-b-4xl">
         <div>
           {token ? (
             <h1 className="text-xl">
