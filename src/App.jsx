@@ -6,6 +6,7 @@ import DashboardStudent from "./pages/DashboardStudent/dashboardStudent";
 import { PrivateRoute } from "./routes/PrivateRoute";
 import { PublicRoute } from "./routes/PublicRoute";
 import DashboardTeacher from "./pages/DashBoardTeacher/dashboardTeacher";
+import Profile from "./pages/Profile/profile";
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
             path="/dashboardTeacher"
             element={<DashboardTeacher />}
           ></Route>
+          <Route path="/profile" element={<Profile />}></Route>
         </Route>
       </Routes>
     </>
