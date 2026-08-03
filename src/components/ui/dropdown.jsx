@@ -31,7 +31,6 @@ export function DropdownMenuBasic() {
           <NavLink to="/profile">
             <DropdownMenuItem>Perfil</DropdownMenuItem>
           </NavLink>
-          <DropdownMenuItem>Configurações</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem
