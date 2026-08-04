@@ -60,10 +60,12 @@ export default function Login() {
               />
             </div>
             <div>
-              <label>
-                <strong>Senha:</strong>
-              </label>{" "}
-              <br />
+              <div className="flex justify-between items-center">
+                <label>
+                  <strong>Senha:</strong>
+                </label>
+                <p className="text-sm cursor-pointer underline text-azul">Esqueceu a senha?</p>
+              </div>
               <Input
                 type="password"
                 value={password}
