@@ -17,6 +17,7 @@ export default function App() {
         <Route element={<PublicRoute />}>
           <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/resetPassword" element={<ResetPassword />}></Route>
         </Route>
         <Route element={<PrivateRoute />}>
           <Route
@@ -28,7 +29,6 @@ export default function App() {
             element={<DashboardTeacher />}
           ></Route>
           <Route path="/profile" element={<Profile />}></Route>
-          <Route path="/resetPassword" element={<ResetPassword />}></Route>
         </Route>
       </Routes>
     </>
