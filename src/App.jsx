@@ -7,6 +7,7 @@ import { PrivateRoute } from "./routes/PrivateRoute";
 import { PublicRoute } from "./routes/PublicRoute";
 import DashboardTeacher from "./pages/DashBoardTeacher/dashboardTeacher";
 import Profile from "./pages/Profile/profile";
+import ResetPassword from "./pages/ResetPassword/resetPassword";
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
             element={<DashboardTeacher />}
           ></Route>
           <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/resetPassword" element={<ResetPassword />}></Route>
         </Route>
       </Routes>
     </>
