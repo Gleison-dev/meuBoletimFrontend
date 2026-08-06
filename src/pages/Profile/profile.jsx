@@ -1,12 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import icon_arrow from "../../assets/icon_arrow.svg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { api } from "@/services/api";
 import { AuthContext } from "@/context/AuthContext";
 
 export default function Profile() {
   const { user, token } = useContext(AuthContext);
   const [email, setEmail] = useState("");
+  const [currentEmail, setCurrentEmail] = useState(user?.email);
   const [password, setPassword] = useState("");
   const [messageEmail, setMessageEmail] = useState("");
   const [messagePassword, setMessagePassword] = useState("");
@@ -28,6 +29,7 @@ export default function Profile() {
       setTimeout(() => {
         setMessageEmail("");
         setEmail("");
+        window.location.reload();
       }, 3000);
     } catch (error) {
       const message =
@@ -54,6 +56,7 @@ export default function Profile() {
       setTimeout(() => {
         setMessagePassword("");
         setPassword("");
+        window.location.reload();
       }, 3000);
     } catch (error) {
       const message =
