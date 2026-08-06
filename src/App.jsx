@@ -13,26 +13,30 @@ import Footer from "./components/Footer/footer";
 export default function App() {
   return (
     <>
-      <Header />
-      <Routes>
-        <Route element={<PublicRoute />}>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/resetPassword" element={<ResetPassword />}></Route>
-        </Route>
-        <Route element={<PrivateRoute />}>
-          <Route
-            path="/dashboardStudent"
-            element={<DashboardStudent />}
-          ></Route>
-          <Route
-            path="/dashboardTeacher"
-            element={<DashboardTeacher />}
-          ></Route>
-          <Route path="/profile" element={<Profile />}></Route>
-        </Route>
-      </Routes>
-      <Footer />
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-1">
+          <Routes>
+            <Route element={<PublicRoute />}>
+              <Route path="/" element={<Home />}></Route>
+              <Route path="/login" element={<Login />}></Route>
+              <Route path="/resetPassword" element={<ResetPassword />}></Route>
+            </Route>
+            <Route element={<PrivateRoute />}>
+              <Route
+                path="/dashboardStudent"
+                element={<DashboardStudent />}
+              ></Route>
+              <Route
+                path="/dashboardTeacher"
+                element={<DashboardTeacher />}
+              ></Route>
+              <Route path="/profile" element={<Profile />}></Route>
+            </Route>
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }
