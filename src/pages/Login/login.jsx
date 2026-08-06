@@ -38,7 +38,7 @@ export default function Login() {
 
   return (
     <>
-      <section className="flex justify-center  mt-10">
+      <section className="flex justify-center mt-10">
         <div className="w-96 rounded-xl main-login flex flex-col items-center justify-center bg-azul-claro">
           <div>
             <h1 className="text-xl">
