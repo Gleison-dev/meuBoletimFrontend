@@ -88,14 +88,17 @@ export default function DashboardStudent() {
             <div>
               {loading ? (
                 <p>Carregando...</p>
-              ) : (
+              ) : note && note.length > 0 ? (
                 note.map((i) => (
                   <TableActions
+                    key={i.id ?? `${i.disciplina.name}-${i.unit}`}
                     discipline={i.disciplina.name}
                     unit={i.unit}
                     note={i.note}
                   />
                 ))
+              ) : (
+                <p>Nenhuma nota encontrada.</p>
               )}
             </div>
           </div>

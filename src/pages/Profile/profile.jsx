@@ -5,7 +5,7 @@ import { api } from "@/services/api";
 import { AuthContext } from "@/context/AuthContext";
 
 export default function Profile() {
-  const { user, token } = useContext(AuthContext);
+  const { user, token, role } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [currentEmail, setCurrentEmail] = useState(user?.email);
   const [password, setPassword] = useState("");
@@ -70,7 +70,9 @@ export default function Profile() {
       <section className="mt-10 flex justify-center items-center">
         <div className="w-96 h-100 rounded-xl bg-azul-claro">
           <div className="mt-5 ml-5">
-            <NavLink to="/dashboardStudent">
+            <NavLink
+              to={role === "ALUNO" ? "/dashboardStudent" : "/dashboardTeacher"}
+            >
               <img
                 className="hover:cursor-pointer"
                 src={icon_arrow}
