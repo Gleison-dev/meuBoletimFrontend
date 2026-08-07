@@ -1,6 +1,7 @@
 import icon_user from "../../assets/icon_user.svg";
 import icon_class from "../../assets/icon_class.svg";
 import icon_email from "../../assets/icon_email.svg";
+import { TableActionsTeacher } from "@/components/ui/tableActionTeacher";
 
 export default function DashboardTeacher() {
   return (
@@ -34,12 +35,14 @@ export default function DashboardTeacher() {
             </div>
           </div>
           <div className="p-4 mt-5 rounded-xl bg-branco">
-            <div>
+            <div> 
               <h1 className="text-xl">
                 <strong>Minhas Turmas</strong>
               </h1>
             </div>
-            <div>table</div>
+            <div>
+              <TableActionsTeacher />
+            </div>
           </div>
         </div>
       </section>
