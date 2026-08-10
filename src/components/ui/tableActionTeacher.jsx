@@ -17,18 +17,20 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-export function TableActionsTeacher() {
+export function TableActionsTeacher({ turma, discipline }) {
   return (
     <Table>
       <TableHeader>
         <TableRow>
           <TableHead>Turma</TableHead>
+          <TableHead>Disciplina</TableHead>
           <TableHead className="text-right">Ações</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         <TableRow>
-          <TableCell className="font-medium">3º B</TableCell>
+          <TableCell className="font-medium">{turma}</TableCell>
+          <TableCell>{discipline}</TableCell>
           <TableCell className="text-right">
             <DropdownMenu>
               <DropdownMenuTrigger
@@ -40,7 +42,7 @@ export function TableActionsTeacher() {
                 }
               />
               <DropdownMenuContent align="end">
-                <DropdownMenuItem>Ver alunos</DropdownMenuItem>
+                <DropdownMenuItem>Acessar</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </TableCell>
