@@ -32,6 +32,7 @@ export default function App() {
                 element={<DashboardTeacher />}
               ></Route>
               <Route path="/profile" element={<Profile />}></Route>
+              <Route path="/dashboardClass"></Route>
             </Route>
           </Routes>
         </main>
