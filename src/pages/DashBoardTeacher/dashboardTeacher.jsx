@@ -9,11 +9,33 @@ import { api } from "@/services/api";
 export default function DashboardTeacher() {
   const { user, token } = useContext(AuthContext);
   const [classes, setClasses] = useState([]);
+  const [count, setCount] = useState(0);
+  const [loading, setLoading] = useState(false);
+
+  const handleCountClass = async () => {
+    try {
+      setLoading(true);
+      const response = await api.get(`/countClass`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setCount(response.data.disciplineTeacher);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      const message =
+        error.response?.data?.message ||
+        "Erro ao buscar a contagem das turmas.";
+      console.log(message);
+    }
+  };
 
   const handleClass = async () => {
     try {
+      setLoading(true);
       const response = await api.get(
-        `/disciplineTeacher?teacherId=${user.id}`,
+        `/disciplineTeacher`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -21,7 +43,9 @@ export default function DashboardTeacher() {
         },
       );
       setClasses(response.data.disciplineTeacher);
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       const message =
         error.response?.data?.message || "Erro ao buscar as turmas.";
       console.log(message);
@@ -29,6 +53,7 @@ export default function DashboardTeacher() {
   };
 
   useEffect(() => {
+    handleCountClass();
     handleClass();
   }, [user, token]);
 
@@ -54,7 +79,7 @@ export default function DashboardTeacher() {
               </div>
               <div className="flex items-center gap-1">
                 <img src={icon_class} alt="Ícone de usuário" />
-                <p>Turmas</p>
+                {loading ? <p>Carregando...</p> : <p>{count} turmas</p>}
               </div>
               <div className="flex items-center gap-1">
                 <img src={icon_email} alt="Ícone de usuário" />
@@ -69,13 +94,19 @@ export default function DashboardTeacher() {
               </h1>
             </div>
             <div>
-              {classes.map((i) => (
-                <TableActionsTeacher
-                  key={i.id}
-                  turma={i.turma.name}
-                  discipline={i.disciplina.name}
-                />
-              ))}
+              {loading ? (
+                <p>Carregando...</p>
+              ) : (
+                <>
+                  {classes.map((i) => (
+                    <TableActionsTeacher
+                      key={i.id}
+                      turma={i.turma.name}
+                      discipline={i.disciplina.name}
+                    />
+                  ))}
+                </>
+              )}
             </div>
           </div>
         </div>
