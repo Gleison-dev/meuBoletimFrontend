@@ -64,11 +64,17 @@ export default function Login() {
                 <label>
                   <strong>Senha:</strong>
                 </label>
-                <NavLink to="/resetPassword">
-                  <p className="text-sm cursor-pointer underline text-azul">
+                {loading ? (
+                  <p className="text-sm cursor-pointer underline text-gray-600">
                     Esqueceu a senha?
                   </p>
-                </NavLink>
+                ) : (
+                  <NavLink to="/resetPassword">
+                    <p className="text-sm cursor-pointer underline text-azul">
+                      Esqueceu a senha?
+                    </p>
+                  </NavLink>
+                )}
               </div>
               <Input
                 type="password"
