@@ -5,7 +5,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
@@ -16,8 +15,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useNavigate } from "react-router-dom";
 
-export function TableActionsTeacher({ turma, discipline }) {
+export function TableActionsTeacher({ id, turma, discipline }) {
+  const navigate = useNavigate();
+
   return (
     <Table>
       <TableHeader>
@@ -42,7 +44,11 @@ export function TableActionsTeacher({ turma, discipline }) {
                 }
               />
               <DropdownMenuContent align="end">
-                <DropdownMenuItem>Acessar</DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => navigate(`/dashboardClass/${id}`)}
+                >
+                  Acessar
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </TableCell>

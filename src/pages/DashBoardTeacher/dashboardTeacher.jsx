@@ -5,12 +5,14 @@ import { TableActionsTeacher } from "@/components/ui/tableActionTeacher";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "@/context/AuthContext";
 import { api } from "@/services/api";
+import { useNavigate } from "react-router-dom";
 
 export default function DashboardTeacher() {
   const { user, token } = useContext(AuthContext);
   const [classes, setClasses] = useState([]);
   const [count, setCount] = useState(0);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleCountClass = async () => {
     try {
@@ -34,14 +36,11 @@ export default function DashboardTeacher() {
   const handleClass = async () => {
     try {
       setLoading(true);
-      const response = await api.get(
-        `/disciplineTeacher`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+      const response = await api.get(`/disciplineTeacher`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
-      );
+      });
       setClasses(response.data.disciplineTeacher);
       setLoading(false);
     } catch (error) {
@@ -101,6 +100,7 @@ export default function DashboardTeacher() {
                   {classes.map((i) => (
                     <TableActionsTeacher
                       key={i.id}
+                      id={i.id}
                       turma={i.turma.name}
                       discipline={i.disciplina.name}
                     />

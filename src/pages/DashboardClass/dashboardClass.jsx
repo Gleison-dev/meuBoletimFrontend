@@ -1,7 +1,9 @@
 export default function DashboardClass() {
   return (
     <>
-      <section></section>
+      <section>
+        <p>aaaaaa</p>
+      </section>
     </>
   );
 }

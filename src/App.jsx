@@ -9,6 +9,7 @@ import DashboardTeacher from "./pages/DashBoardTeacher/dashboardTeacher";
 import Profile from "./pages/Profile/profile";
 import ResetPassword from "./pages/ResetPassword/resetPassword";
 import Footer from "./components/Footer/footer";
+import DashboardClass from "./pages/DashboardClass/dashboardClass";
 
 export default function App() {
   return (
@@ -32,7 +33,10 @@ export default function App() {
                 element={<DashboardTeacher />}
               ></Route>
               <Route path="/profile" element={<Profile />}></Route>
-              <Route path="/dashboardClass"></Route>
+              <Route
+                path="/dashboardClass/:id"
+                element={<DashboardClass />}
+              ></Route>
             </Route>
           </Routes>
         </main>
