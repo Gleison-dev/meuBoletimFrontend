@@ -43,6 +43,7 @@ export default function DashboardTeacher() {
       });
       setClasses(response.data.disciplineTeacher);
       setLoading(false);
+      console.log(classes)
     } catch (error) {
       setLoading(false);
       const message =
@@ -100,7 +101,7 @@ export default function DashboardTeacher() {
                   {classes.map((i) => (
                     <TableActionsTeacher
                       key={i.id}
-                      id={i.id}
+                      id={i.classId}
                       turma={i.turma.name}
                       discipline={i.disciplina.name}
                     />
