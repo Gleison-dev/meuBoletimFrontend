@@ -47,8 +47,8 @@ export default function CreateUser() {
 
   return (
     <>
-      <section className="flex justify-center mt-10">
-        <div className="w-96 p-4 rounded-xl bg-azul-claro">
+      <section>
+        <div>
           <div>
             <h1 className="text-2xl">Olá, {user?.name}!</h1>
           </div>
