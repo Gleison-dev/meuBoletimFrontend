@@ -53,7 +53,12 @@ export default function CreateUser() {
             <h1 className="text-2xl">Olá, {user?.name}!</h1>
           </div>
           <div className="flex flex-col gap-4 p-4 mt-5 rounded-lg bg-branco">
-            <h1 className="text-xl">Cadastrar usuário</h1>
+            <div>
+              <h1 className="text-xl">
+                <strong>Cadastrar usuário</strong>
+              </h1>
+              <p>Cadastre um estudante/educador!</p>
+            </div>
             <div className="flex flex-col gap-3">
               <div>
                 <Label name="Nome" /> <br />
