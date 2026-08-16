@@ -7,10 +7,14 @@ import { Navigate, Outlet } from "react-router-dom";
 export function PublicRoute() {
   const { token, role } = useContext(AuthContext);
   const isAuthenticated = token && !isTokenExpired(token);
-  
+
   if (isAuthenticated) {
     const verifyRole =
-      role === "ALUNO" ? "/dashboardStudent" : "/dashboardTeacher";
+      role === "ALUNO"
+        ? "/dashboardStudent"
+        : role === "PROFESSOR"
+          ? "/dashboardTeacher"
+          : "/dashboardAdmin";
     return <Navigate to={verifyRole} replace />;
   }
 
