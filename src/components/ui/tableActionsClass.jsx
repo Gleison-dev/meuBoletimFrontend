@@ -17,7 +17,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-export function TableActionsClass() {
+export function TableActionsClass({ name }) {
   return (
     <Table>
       <TableHeader>
@@ -28,7 +28,7 @@ export function TableActionsClass() {
       </TableHeader>
       <TableBody>
         <TableRow>
-          <TableCell className="font-medium">Lil Uzi Vert</TableCell>
+          <TableCell className="font-medium">{name}</TableCell>
           <TableCell className="text-right">
             <DropdownMenu>
               <DropdownMenuTrigger
