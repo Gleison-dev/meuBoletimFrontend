@@ -10,6 +10,7 @@ import Profile from "./pages/Profile/profile";
 import ResetPassword from "./pages/ResetPassword/resetPassword";
 import Footer from "./components/Footer/footer";
 import DashboardClass from "./pages/DashboardClass/dashboardClass";
+import DashboardAdmin from "./pages/DashboardAdmin/dashboardAdmin";
 
 export default function App() {
   return (
@@ -37,6 +38,7 @@ export default function App() {
                 path="/dashboardClass/:id"
                 element={<DashboardClass />}
               ></Route>
+              <Route path="/dasboardAdmin" element={<DashboardAdmin />}></Route>
             </Route>
           </Routes>
         </main>
