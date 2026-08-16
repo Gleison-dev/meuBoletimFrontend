@@ -1,7 +1,7 @@
 export default function DashboardAdmin() {
   return (
     <>
-      <section></section>
+      <section><h1>hello, world!</h1></section>
     </>
   );
 }

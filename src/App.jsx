@@ -38,7 +38,7 @@ export default function App() {
                 path="/dashboardClass/:id"
                 element={<DashboardClass />}
               ></Route>
-              <Route path="/dasboardAdmin" element={<DashboardAdmin />}></Route>
+              <Route path="/dashboardAdmin" element={<DashboardAdmin />}></Route>
             </Route>
           </Routes>
         </main>
