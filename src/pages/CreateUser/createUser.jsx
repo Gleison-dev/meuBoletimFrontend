@@ -1,8 +1,9 @@
-import Label from "../../components/Label/label";
-import Input from "../../components/Input/input";
 import { useContext, useState } from "react";
 import { AuthContext } from "@/context/AuthContext";
 import { api } from "@/services/api";
+import Label from "../../components/Label/label";
+import Input from "../../components/Input/input";
+import icon_user from "../../assets/icon_user.svg";
 
 export default function CreateUser() {
   const { user, token } = useContext(AuthContext);
@@ -54,9 +55,12 @@ export default function CreateUser() {
           </div>
           <div className="flex flex-col gap-4 p-4 mt-5 rounded-lg bg-branco">
             <div>
-              <h1 className="text-xl">
-                <strong>Cadastrar usuário</strong>
-              </h1>
+              <div className="flex items-center gap-2">
+                <h1 className="text-xl">
+                  <strong>Cadastrar usuário</strong>
+                </h1>
+                <img className="w-8 h-8" src={icon_user} alt="Ícone de usuário" />
+              </div>
               <p>Cadastre um estudante/educador!</p>
             </div>
             <div className="flex flex-col gap-3">
