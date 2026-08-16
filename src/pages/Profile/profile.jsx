@@ -71,7 +71,13 @@ export default function Profile() {
         <div className="w-96 h-100 rounded-xl bg-azul-claro">
           <div className="mt-5 ml-5">
             <NavLink
-              to={role === "ALUNO" ? "/dashboardStudent" : "/dashboardTeacher"}
+              to={
+                role === "ALUNO"
+                  ? "/dashboardStudent"
+                  : role === "PROFESSOR"
+                    ? "/dashboardTeacher"
+                    : "/dashboardAdmin"
+              }
             >
               <img
                 className="hover:cursor-pointer"
