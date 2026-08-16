@@ -43,7 +43,6 @@ export default function DashboardTeacher() {
       });
       setClasses(response.data.disciplineTeacher);
       setLoading(false);
-      console.log(classes)
     } catch (error) {
       setLoading(false);
       const message =
