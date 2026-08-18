@@ -1,5 +1,6 @@
 import CreateClass from "../CreateClass/createClass";
 import CreateUser from "../CreateUser/createUser";
+import EnrollStudent from "../EnrollStudent/enrollStudent";
 
 export default function DashboardAdmin() {
   return (
@@ -8,6 +9,7 @@ export default function DashboardAdmin() {
         <div className="flex flex-col gap-10 w-96 p-4 rounded-xl bg-azul-claro">
           <CreateUser />
           <CreateClass />
+          <EnrollStudent />
         </div>
       </section>
     </>
