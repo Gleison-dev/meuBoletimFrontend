@@ -13,6 +13,8 @@ export default function EnrollStudent({
   const { token } = useContext(AuthContext);
   const [studentId, setStudentId] = useState("");
   const [classId, setClassId] = useState("");
+  const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetchStudents();
@@ -33,6 +35,7 @@ export default function EnrollStudent({
     e.preventDefault();
 
     try {
+      setLoading(true);
       const response = await api.post(
         `/createStudent?userId=${studentId}&classId=${classId}`,
         {},
@@ -42,11 +45,14 @@ export default function EnrollStudent({
           },
         },
       );
-      console.log(response);
+      setStatus(response.data.student);
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       const message =
         error.response?.data?.message ||
         "Erro ao vincular o estudante há uma turma.";
+      setStatus(message);
     }
   };
 
@@ -77,13 +83,26 @@ export default function EnrollStudent({
               placeholder="Selecione uma turma"
             />
           </div>
+          <div>
+            <p className="text-azul">{status}</p>
+          </div>
           <div className="flex justify-center mt-4">
-            <button
-              type="submit"
-              className="w-80 h-12 text-xl rounded-md text-branco bg-azul hover:bg-blue-800"
-            >
-              Vincular
-            </button>
+            {loading ? (
+              <button
+                disabled
+                type="submit"
+                className="w-80 h-12 text-xl rounded-md text-branco bg-gray-500"
+              >
+                Vinculando...
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className="w-80 h-12 text-xl rounded-md text-branco bg-azul hover:bg-blue-800"
+              >
+                Vincular
+              </button>
+            )}
           </div>
         </form>
       </section>
