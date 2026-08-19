@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import { api } from "@/services/api";
 import { AuthContext } from "@/context/AuthContext";
 
-export default function CreateClass() {
+export default function CreateClass({ onClassCreated }) {
   const { token } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
@@ -29,6 +29,7 @@ export default function CreateClass() {
       );
       setStatus(response.data.newClass);
       setLoading(false);
+      onClassCreated?.();
     } catch (error) {
       setLoading(false);
       const message = error.response?.data?.message || "Erro ao criar a turma.";

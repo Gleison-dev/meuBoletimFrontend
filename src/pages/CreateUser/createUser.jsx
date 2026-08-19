@@ -5,7 +5,7 @@ import Label from "../../components/Label/label";
 import Input from "../../components/Input/input";
 import icon_user from "../../assets/icon_user.svg";
 
-export default function CreateUser() {
+export default function CreateUser({ onUserCreated }) {
   const { user, token } = useContext(AuthContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -33,16 +33,18 @@ export default function CreateUser() {
       );
       setStatus(response.data.user);
       setLoading(false);
-      setTimeout(() => {
-        setName("");
-        setEmail("");
-        setPassword("");
-      }, 3000);
+      onUserCreated?.();
     } catch (error) {
       setLoading(false);
       const message =
         error.response?.data?.message || "Erro ao criar o usuário";
       setStatus(message);
+    } finally {
+      setTimeout(() => {
+        setName("");
+        setEmail("");
+        setPassword("");
+      }, 3000);
     }
   };
 
@@ -59,7 +61,11 @@ export default function CreateUser() {
                 <h1 className="text-xl">
                   <strong>Cadastrar usuário</strong>
                 </h1>
-                <img className="w-8 h-8" src={icon_user} alt="Ícone de usuário" />
+                <img
+                  className="w-8 h-8"
+                  src={icon_user}
+                  alt="Ícone de usuário"
+                />
               </div>
               <p>Cadastre um estudante/educador!</p>
             </div>

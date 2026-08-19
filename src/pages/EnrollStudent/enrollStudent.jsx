@@ -1,44 +1,23 @@
+import Label from "@/components/Label/label";
 import { AuthContext } from "@/context/AuthContext";
 import { api } from "@/services/api";
 import { useContext, useEffect, useState } from "react";
 import Select from "react-select";
 
-export default function EnrollStudent() {
+export default function EnrollStudent({
+  students,
+  classes,
+  fetchStudents,
+  fetchClasses,
+}) {
   const { token } = useContext(AuthContext);
-  const [students, setStudents] = useState([]);
-  const [classes, setClasses] = useState([]);
   const [studentId, setStudentId] = useState("");
   const [classId, setClassId] = useState("");
 
-  const handleStudents = async () => {
-    try {
-      const response = await api.get("/students", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setStudents(response.data.students);
-    } catch (error) {
-      const message =
-        error.response?.data?.message || "Erro ao listar todos os estudantes.";
-      return console.error(message);
-    }
-  };
-
-  const handleClasses = async () => {
-    try {
-      const response = await api.get("/classes", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setClasses(response.data.classes);
-    } catch (error) {
-      const message =
-        error.response?.data?.message || "Erro ao listar todas as turmas.";
-      return console.error(message);
-    }
-  };
+  useEffect(() => {
+    fetchStudents();
+    fetchClasses();
+  }, [fetchStudents, fetchClasses]);
 
   const studentOption = students.map((aluno) => ({
     value: aluno.id,
@@ -50,10 +29,26 @@ export default function EnrollStudent() {
     label: classe.name,
   }));
 
-  useEffect(() => {
-    handleStudents();
-    handleClasses();
-  }, [token]);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await api.post(
+        `/createStudent?userId=${studentId}&classId=${classId}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      console.log(response);
+    } catch (error) {
+      const message =
+        error.response?.data?.message ||
+        "Erro ao vincular o estudante há uma turma.";
+    }
+  };
 
   return (
     <>
@@ -64,12 +59,33 @@ export default function EnrollStudent() {
           </h1>
           <p>Vincule um estudante há uma turma.</p>
         </div>
-        <Select
-          className="mt-4 focus:bg-blue-800"
-          options={studentOption}
-          onChange={(selected) => setStudentId(selected.value)}
-          placeholder="Selecione um aluno"
-        />
+        <form onSubmit={handleSubmit}>
+          <div className="mt-4">
+            <Label name="Nome do Estudante" /> <br />
+            <Select
+              className="focus:bg-blue-800"
+              options={studentOption}
+              onChange={(selected) => setStudentId(selected.value)}
+              placeholder="Selecione um aluno"
+            />
+          </div>
+          <div className="mt-4">
+            <Label name="Nome da turma" />
+            <Select
+              options={classOption}
+              onChange={(selected) => setClassId(selected.value)}
+              placeholder="Selecione uma turma"
+            />
+          </div>
+          <div className="flex justify-center mt-4">
+            <button
+              type="submit"
+              className="w-80 h-12 text-xl rounded-md text-branco bg-azul hover:bg-blue-800"
+            >
+              Vincular
+            </button>
+          </div>
+        </form>
       </section>
     </>
   );
