@@ -44,6 +44,7 @@ export default function CreateUser({ onUserCreated }) {
         setName("");
         setEmail("");
         setPassword("");
+        setStatus("");
       }, 3000);
     }
   };
