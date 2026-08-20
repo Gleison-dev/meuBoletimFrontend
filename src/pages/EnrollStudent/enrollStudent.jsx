@@ -54,6 +54,10 @@ export default function EnrollStudent({
         "Erro ao vincular o estudante há uma turma.";
       setStatus(message);
     }
+
+    setTimeout(() => {
+      setStatus("");
+    }, 3000);
   };
 
   return (
@@ -83,10 +87,12 @@ export default function EnrollStudent({
               placeholder="Selecione uma turma"
             />
           </div>
-          <div>
-            <p className="text-azul">{status}</p>
+          <div className="mt-2">
+            <p className="text-azul">
+              <strong>{status}</strong>
+            </p>
           </div>
-          <div className="flex justify-center mt-4">
+          <div className="flex justify-center mt-2">
             {loading ? (
               <button
                 disabled
