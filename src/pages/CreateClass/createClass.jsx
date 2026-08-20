@@ -81,7 +81,7 @@ export default function CreateClass({ onClassCreated }) {
             ) : (
               <button
                 type="submit"
-                className="w-80 h-12 rounded-md text-xl text-branco bg-azul hover:cursor-pointer"
+                className="w-80 h-12 rounded-md text-xl text-branco bg-azul hover:bg-blue-800"
               >
                 Criar turma
               </button>
