@@ -5,7 +5,7 @@ import Label from "../../components/Label/label";
 import Input from "../../components/Input/input";
 import icon_user from "../../assets/icon_user.svg";
 
-export default function CreateUser({ onUserCreated }) {
+export default function CreateUser({ onUserCreated, onTeacherCreated }) {
   const { user, token } = useContext(AuthContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -34,6 +34,7 @@ export default function CreateUser({ onUserCreated }) {
       setStatus(response.data.user);
       setLoading(false);
       onUserCreated?.();
+      onTeacherCreated?.()
     } catch (error) {
       setLoading(false);
       const message =

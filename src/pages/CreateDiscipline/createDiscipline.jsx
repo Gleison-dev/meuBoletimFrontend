@@ -4,7 +4,7 @@ import { AuthContext } from "@/context/AuthContext";
 import { api } from "@/services/api";
 import { useContext, useState } from "react";
 
-export default function CreateDiscipline() {
+export default function CreateDiscipline({ onUserCreated }) {
   const { token } = useContext(AuthContext);
   const [name, setName] = useState("");
   const [status, setStatus] = useState("");
@@ -28,6 +28,7 @@ export default function CreateDiscipline() {
       );
       setStatus(response.data.discipline);
       setLoading(false);
+      onUserCreated?.();
     } catch (error) {
       setLoading(false);
       const message =
