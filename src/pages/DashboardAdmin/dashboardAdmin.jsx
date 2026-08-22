@@ -5,6 +5,7 @@ import EnrollStudent from "../EnrollStudent/enrollStudent";
 import { api } from "@/services/api";
 import { AuthContext } from "@/context/AuthContext";
 import CreateDiscipline from "../CreateDiscipline/createDiscipline";
+import EnrollDisiciplineTeacher from "../EnrollDisciplineTeacher/enrollDisciplineTeacher";
 
 export default function DashboardAdmin() {
   const { token } = useContext(AuthContext);
@@ -54,6 +55,7 @@ export default function DashboardAdmin() {
             fetchClasses={fetchClasses}
           />
           <CreateDiscipline />
+          <EnrollDisiciplineTeacher />
         </div>
       </section>
     </>
