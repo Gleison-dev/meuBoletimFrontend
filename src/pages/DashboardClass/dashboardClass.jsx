@@ -4,6 +4,7 @@ import { api } from "@/services/api";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "@/context/AuthContext";
 import { TableActionsClass } from "@/components/ui/tableActionsClass";
+import CardStudent from "@/components/CardStudent/cardStudent";
 
 export default function DashboardClass() {
   const [students, setStudents] = useState([]);
@@ -51,7 +52,7 @@ export default function DashboardClass() {
             ) : (
               <>
                 {students.map((i) => (
-                  <TableActionsClass key={i.id} name={i.usuario.name} />
+                  <CardStudent key={i.id} />
                 ))}
               </>
             )}
