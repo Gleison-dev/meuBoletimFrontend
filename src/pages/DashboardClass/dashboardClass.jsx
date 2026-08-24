@@ -52,7 +52,7 @@ export default function DashboardClass() {
             ) : (
               <>
                 {students.map((i) => (
-                  <CardStudent key={i.id} />
+                  <CardStudent key={i.id} name={i.usuario.name} />
                 ))}
               </>
             )}

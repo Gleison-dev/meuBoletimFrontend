@@ -18,29 +18,28 @@ export function DialogDemo() {
     <Dialog>
       <form>
         <DialogTrigger
-          render={<Button variant="outline">Open Dialog</Button>}
+          render={<Button variant="outline">Lançar nota</Button>}
         />
         <DialogContent className="sm:max-w-sm">
           <DialogHeader>
-            <DialogTitle>Edit profile</DialogTitle>
+            <DialogTitle>Lançamento de notas</DialogTitle>
             <DialogDescription>
-              Make changes to your profile here. Click save when you&apos;re
-              done.
+              Faça o lançamento das notas do estudante pelo formulário abaixo!
             </DialogDescription>
           </DialogHeader>
           <FieldGroup>
             <Field>
-              <Label htmlFor="name-1">Name</Label>
-              <Input id="name-1" name="name" defaultValue="Pedro Duarte" />
+              <Label htmlFor="name-1">Unidade</Label>
+              <Input type="number" placeholder="Insira a unidade" />
             </Field>
             <Field>
-              <Label htmlFor="username-1">Username</Label>
-              <Input id="username-1" name="username" defaultValue="@peduarte" />
+              <Label htmlFor="username-1">Nota</Label>
+              <Input placeholder="Insira a nota" />
             </Field>
           </FieldGroup>
           <DialogFooter>
-            <DialogClose render={<Button variant="outline">Cancel</Button>} />
-            <Button type="submit">Save changes</Button>
+            <DialogClose render={<Button variant="outline">Cancelar</Button>} />
+            <Button type="submit">Salvar nota</Button>
           </DialogFooter>
         </DialogContent>
       </form>
