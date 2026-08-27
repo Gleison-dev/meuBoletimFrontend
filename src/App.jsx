@@ -35,10 +35,13 @@ export default function App() {
               ></Route>
               <Route path="/profile" element={<Profile />}></Route>
               <Route
-                path="/dashboardClass/:id"
+                path="/dashboardClass/:classId/:disciplineId"
                 element={<DashboardClass />}
               ></Route>
-              <Route path="/dashboardAdmin" element={<DashboardAdmin />}></Route>
+              <Route
+                path="/dashboardAdmin"
+                element={<DashboardAdmin />}
+              ></Route>
             </Route>
           </Routes>
         </main>

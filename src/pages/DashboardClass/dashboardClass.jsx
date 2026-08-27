@@ -3,12 +3,13 @@ import icon_arrow from "../../assets/icon_arrow.svg";
 import { api } from "@/services/api";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "@/context/AuthContext";
-import { TableActionsClass } from "@/components/ui/tableActionsClass";
 import CardStudent from "@/components/CardStudent/cardStudent";
 
 export default function DashboardClass() {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [studentId, setStudentId] = useState("");
+  const [disciplineId, setDiscipplineId] = useState("");
   const { token } = useContext(AuthContext);
   const { id } = useParams();
 
@@ -28,6 +29,28 @@ export default function DashboardClass() {
         error.response?.data?.message ||
         "Erro ao buscar os estudantes da turma.";
       console.log(message);
+    }
+  };
+
+  const handleNote = async (e) => {
+    try {
+      const response = await api.post(
+        `/createNote?studentId=${studentId}&disciplineId=${disciplineId}`,
+        {
+          unit,
+          note,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      console.log(response);
+    } catch (error) {
+      const message =
+        error.response?.data?.message || "Erro ao lançar as notas.";
+      return console.error(message);
     }
   };
 

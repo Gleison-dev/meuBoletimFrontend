@@ -13,7 +13,7 @@ import { Field, FieldGroup } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-export function DialogDemo() {
+export function DialogDemo({ value, onChange }) {
   return (
     <Dialog>
       <form>
@@ -30,7 +30,12 @@ export function DialogDemo() {
           <FieldGroup>
             <Field>
               <Label htmlFor="name-1">Unidade</Label>
-              <Input type="number" placeholder="Insira a unidade" />
+              <Input
+                type="number"
+                value={value}
+                onChange={onChange}
+                placeholder="Insira a unidade"
+              />
             </Field>
             <Field>
               <Label htmlFor="username-1">Nota</Label>
