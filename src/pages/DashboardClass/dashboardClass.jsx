@@ -8,7 +8,6 @@ import CardStudent from "@/components/CardStudent/cardStudent";
 export default function DashboardClass() {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [studentId, setStudentId] = useState("");
   const { token } = useContext(AuthContext);
   const { classId, disciplineId } = useParams();
 
@@ -31,31 +30,9 @@ export default function DashboardClass() {
     }
   };
 
-  const handleNote = async (e) => {
-    try {
-      const response = await api.post(
-        `/createNote?studentId=${studentId}&disciplineId=${disciplineId}`,
-        {
-          unit,
-          note,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-      );
-      console.log(response);
-    } catch (error) {
-      const message =
-        error.response?.data?.message || "Erro ao lançar as notas.";
-      return console.error(message);
-    }
-  };
-
   useEffect(() => {
     handleSearch();
-  }, [token]);
+  }, [classId, token]);
   return (
     <>
       <section className="flex justify-center">
@@ -74,7 +51,12 @@ export default function DashboardClass() {
             ) : (
               <>
                 {students.map((i) => (
-                  <CardStudent key={i.id} id={i.id} name={i.usuario.name} />
+                  <CardStudent
+                    key={i.id}
+                    id={i.id}
+                    name={i.usuario.name}
+                    disciplineId={disciplineId}
+                  />
                 ))}
               </>
             )}

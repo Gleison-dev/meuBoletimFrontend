@@ -100,6 +100,8 @@ export default function DashboardTeacher() {
                   {classes.map((i) => (
                     <TableActionsTeacher
                       key={i.id}
+                      classId={i.classId}
+                      disciplineId={i.disciplineId}
                       id={i.classId}
                       turma={i.turma.name}
                       discipline={i.disciplina.name}

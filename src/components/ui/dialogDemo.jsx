@@ -12,8 +12,37 @@ import {
 import { Field, FieldGroup } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { AuthContext } from "@/context/AuthContext";
+import { api } from "@/services/api";
+import { useContext, useState } from "react";
 
-export function DialogDemo({ studentId, value, onChange }) {
+export function DialogDemo({ studentId, disciplineId }) {
+  const { token } = useContext(AuthContext);
+  const [unit, setUnit] = useState("");
+  const [note, setNote] = useState("");
+
+  const handleNote = async () => {
+    try {
+      const response = await api.post(
+        `/createNote?studentId=${studentId}&disciplineId=${disciplineId}`,
+        {
+          unit,
+          note,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      console.log(response);
+      console.log(studentId, disciplineId);
+    } catch (error) {
+      const message = error.response?.data?.message || "Erro ao lançar a nota.";
+      return console.error(message);
+    }
+  };
+
   return (
     <Dialog>
       <form>
@@ -32,19 +61,23 @@ export function DialogDemo({ studentId, value, onChange }) {
               <Label htmlFor="name-1">Unidade</Label>
               <Input
                 type="number"
-                value={value}
-                onChange={onChange}
+                value={unit}
+                onChange={(e) => setUnit(e.target.value)}
                 placeholder="Insira a unidade"
               />
             </Field>
             <Field>
               <Label htmlFor="username-1">Nota</Label>
-              <Input placeholder="Insira a nota" />
+              <Input
+                value={note}
+                onChange={(e) => setNote(e.target.value)}
+                placeholder="Insira a nota"
+              />
             </Field>
           </FieldGroup>
           <DialogFooter>
             <DialogClose render={<Button variant="outline">Cancelar</Button>} />
-            <Button type="submit">Salvar nota</Button>
+            <Button onClick={handleNote}>Salvar nota</Button>
           </DialogFooter>
         </DialogContent>
       </form>
