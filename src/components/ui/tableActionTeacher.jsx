@@ -17,7 +17,12 @@ import {
 } from "@/components/ui/table";
 import { useNavigate } from "react-router-dom";
 
-export function TableActionsTeacher({ id, turma, discipline }) {
+export function TableActionsTeacher({
+  classId,
+  disciplineId,
+  turma,
+  discipline,
+}) {
   const navigate = useNavigate();
 
   return (
@@ -45,7 +50,9 @@ export function TableActionsTeacher({ id, turma, discipline }) {
               />
               <DropdownMenuContent align="end">
                 <DropdownMenuItem
-                  onClick={() => navigate(`/dashboardClass/${id}`)}
+                  onClick={() =>
+                    navigate(`/dashboardClass/${classId}/${disciplineId}`)
+                  }
                 >
                   Acessar
                 </DropdownMenuItem>

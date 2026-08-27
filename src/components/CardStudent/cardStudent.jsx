@@ -1,6 +1,6 @@
 import { DialogDemo } from "../ui/dialogDemo";
 
-export default function CardStudent({ name }) {
+export default function CardStudent({ id, name }) {
   return (
     <>
       <section className="w-30 p-4 gap-2 shadow flex flex-col justify-center items-center border rounded-xl">
@@ -11,7 +11,7 @@ export default function CardStudent({ name }) {
         </div>
         <hr className="w-20 border border-azul" />
         <div>
-          <DialogDemo />
+          <DialogDemo studentId={id} />
         </div>
       </section>
     </>

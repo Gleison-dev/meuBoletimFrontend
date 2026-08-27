@@ -9,14 +9,13 @@ export default function DashboardClass() {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(false);
   const [studentId, setStudentId] = useState("");
-  const [disciplineId, setDiscipplineId] = useState("");
   const { token } = useContext(AuthContext);
-  const { id } = useParams();
+  const { classId, disciplineId } = useParams();
 
   const handleSearch = async () => {
     setLoading(true);
     try {
-      const response = await api.get(`/studentsOfClass?classId=${id}`, {
+      const response = await api.get(`/studentsOfClass?classId=${classId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -75,7 +74,7 @@ export default function DashboardClass() {
             ) : (
               <>
                 {students.map((i) => (
-                  <CardStudent key={i.id} name={i.usuario.name} />
+                  <CardStudent key={i.id} id={i.id} name={i.usuario.name} />
                 ))}
               </>
             )}
