@@ -6,6 +6,7 @@ import { api } from "@/services/api";
 import { AuthContext } from "@/context/AuthContext";
 import CreateDiscipline from "../CreateDiscipline/createDiscipline";
 import EnrollDisiciplineTeacher from "../EnrollDisciplineTeacher/enrollDisciplineTeacher";
+import DeleteUser from "../DeleteUser/deleteUser";
 
 export default function DashboardAdmin() {
   const { token } = useContext(AuthContext);
@@ -78,7 +79,10 @@ export default function DashboardAdmin() {
     <>
       <section className="flex flex-col justify-center items-center mt-10">
         <div className="flex flex-col gap-10 w-96 p-4 rounded-xl bg-azul-claro">
-          <CreateUser onUserCreated={fetchStudents} onTeacherCreated={fetchTeachers} />
+          <CreateUser
+            onUserCreated={fetchStudents}
+            onTeacherCreated={fetchTeachers}
+          />
           <CreateClass onClassCreated={fetchClasses} />
           <EnrollStudent
             students={students}
@@ -95,6 +99,7 @@ export default function DashboardAdmin() {
             fetchDisciplines={fetchDisciplines}
             fetchClasses={fetchClasses}
           />
+          <DeleteUser />
         </div>
       </section>
     </>
