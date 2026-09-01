@@ -5,6 +5,13 @@ import { useContext, useEffect, useState } from "react";
 import icon_user from "../../assets/icon_user.svg";
 import icon_class from "../../assets/icon_class.svg";
 import icon_email from "../../assets/icon_email.svg";
+import {
+  Table,
+  TableHeader,
+  TableHead,
+  TableRow,
+  TableBody,
+} from "@/components/ui/table";
 
 export default function DashboardStudent() {
   const { user, token } = useContext(AuthContext);
@@ -12,10 +19,10 @@ export default function DashboardStudent() {
   const [studentUser, setStudentUser] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const handleSearchNote = async () => {
+  const handleSearchNote = async (studentId) => {
     try {
       setLoading(true);
-      const response = await api.get(`/noteByStudent?studentId=${user.id}`, {
+      const response = await api.get(`/noteByStudent?studentId=${studentId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -38,6 +45,7 @@ export default function DashboardStudent() {
         },
       });
       setStudentUser(response.data.student);
+      return response.data.student;
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -47,8 +55,15 @@ export default function DashboardStudent() {
   };
 
   useEffect(() => {
-    handleSearchNote();
-    handleSearchStudent();
+    const load = async () => {
+      setLoading(true);
+      const student = await handleSearchStudent(); // AJUSTE: espera o student.id chegar...
+      if (student?.id) {
+        await handleSearchNote(student.id);
+      }
+      setLoading(false);
+    };
+    load();
   }, [user, token]);
 
   return (
@@ -89,14 +104,25 @@ export default function DashboardStudent() {
               {loading ? (
                 <p>Carregando...</p>
               ) : note && note.length > 0 ? (
-                note.map((i) => (
-                  <TableActions
-                    key={i.id ?? `${i.disciplina.name}-${i.unit}`}
-                    discipline={i.disciplina.name}
-                    unit={i.unit}
-                    note={i.note}
-                  />
-                ))
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Disciplina</TableHead>
+                      <TableHead>Unidade</TableHead>
+                      <TableHead className="text-right">Notas</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {note.map((i) => (
+                      <TableActions
+                        key={i.id ?? `${i.disciplina.name}-${i.unit}`}
+                        discipline={i.disciplina.name}
+                        unit={i.unit}
+                        note={i.note}
+                      />
+                    ))}
+                  </TableBody>
+                </Table>
               ) : (
                 <p>Nenhuma nota encontrada.</p>
               )}
