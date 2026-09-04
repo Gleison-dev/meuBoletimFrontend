@@ -10,6 +10,7 @@ import DeleteUser from "../DeleteUser/deleteUser";
 
 export default function DashboardAdmin() {
   const { token } = useContext(AuthContext);
+  const [users, setUsers] = useState([]);
   const [students, setStudents] = useState([]);
   const [classes, setClasses] = useState([]);
   const [teachers, setTeachers] = useState([]);
@@ -75,6 +76,19 @@ export default function DashboardAdmin() {
     }
   }, [token]);
 
+  const fetchUsers = useCallback(async () => {
+    try {
+      const response = await api.get("/users", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUsers(response.data.users);
+    } catch (error) {
+      error.response?.data?.message || "Erro ao listar todos os usuários.";
+    }
+  }, [token]);
+
   return (
     <>
       <section className="flex flex-col justify-center items-center mt-10">
@@ -99,7 +113,7 @@ export default function DashboardAdmin() {
             fetchDisciplines={fetchDisciplines}
             fetchClasses={fetchClasses}
           />
-          <DeleteUser />
+          <DeleteUser fetchUsers={fetchUsers} users={users} />
         </div>
       </section>
     </>
