@@ -11,6 +11,7 @@ import ResetPassword from "./pages/ResetPassword/resetPassword";
 import Footer from "./components/Footer/footer";
 import DashboardClass from "./pages/DashboardClass/dashboardClass";
 import DashboardAdmin from "./pages/DashboardAdmin/dashboardAdmin";
+import NotesOfStudent from "./pages/NotesOfStudent/notesOfStudents";
 
 export default function App() {
   return (
@@ -41,6 +42,10 @@ export default function App() {
               <Route
                 path="/dashboardAdmin"
                 element={<DashboardAdmin />}
+              ></Route>
+              <Route
+                path="/notesOfStudent/:studentId"
+                element={<NotesOfStudent />}
               ></Route>
             </Route>
           </Routes>
