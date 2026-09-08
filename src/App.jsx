@@ -40,12 +40,12 @@ export default function App() {
                 element={<DashboardClass />}
               ></Route>
               <Route
-                path="/dashboardAdmin"
-                element={<DashboardAdmin />}
-              ></Route>
-              <Route
                 path="/notesOfStudent/:studentId"
                 element={<NotesOfStudent />}
+              ></Route>
+              <Route
+                path="/dashboardAdmin"
+                element={<DashboardAdmin />}
               ></Route>
             </Route>
           </Routes>
