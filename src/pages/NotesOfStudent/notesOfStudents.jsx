@@ -3,6 +3,7 @@ import { api } from "@/services/api";
 import { useContext, useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import icon_arrow from "../../assets/icon_arrow.svg";
+import { TableNotes } from "@/components/ui/tableNotes";
 
 export default function NotesOfStudent() {
   const { token } = useContext(AuthContext);
@@ -59,7 +60,9 @@ export default function NotesOfStudent() {
               <strong>{name}</strong>
             </h1>
           </div>
-          <div className="w-80 rounded-lg bg-branco"></div>
+          <div className="w-80 rounded-lg bg-branco">
+            <TableNotes />
+          </div>
         </div>
       </section>
     </>

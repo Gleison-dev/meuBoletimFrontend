@@ -5,7 +5,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
@@ -16,13 +15,30 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useNavigate } from "react-router-dom";
+import { DialogDemo } from "./dialogDemo";
 
-export function TableNotes({ discipline, unit, note }) {
+export function TableNotes({ unit, note }) {
+  const navigate = useNavigate();
+
   return (
-    <TableRow>
-      <TableCell className="font-medium">{discipline}</TableCell>
-      <TableCell className="text-center">{unit}ª</TableCell>
-      <TableCell className="text-center">{note}</TableCell>
-    </TableRow>
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead className="text-center">
+            <strong>Unidade</strong>
+          </TableHead>
+          <TableHead className="text-center">
+            <strong>Nota</strong>
+          </TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell className="text-center font-medium">{unit}</TableCell>
+          <TableCell className="text-center font-medium">{note}</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
   );
 }
