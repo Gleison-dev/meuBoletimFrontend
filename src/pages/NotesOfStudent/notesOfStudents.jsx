@@ -4,6 +4,22 @@ import { useContext, useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import icon_arrow from "../../assets/icon_arrow.svg";
 import { TableNotes } from "@/components/ui/tableNotes";
+import { MoreHorizontalIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 export default function NotesOfStudent() {
   const { token } = useContext(AuthContext);
@@ -48,20 +64,42 @@ export default function NotesOfStudent() {
 
   return (
     <>
-      <section className="flex flex-col justify-center items-center mt-10">
-        <div className="w-96 p-4 rounded-lg bg-azul-claro">
-          <NavLink to="/dashboardTeacher">
-            <div>
-              <img src={icon_arrow} alt="Ícone de seta" />
+      <section className="flex justify-center mt-10">
+        <div className="w-96 p-8 rounded-xl bg-azul-claro">
+          <div>
+            <div className="flex items-center gap-1">
+              <NavLink to="/dashboardTeacher">
+                <img
+                  className="p-1 rounded-full hover:bg-branco cursor-pointer"
+                  src={icon_arrow}
+                  alt="Ícone de seta"
+                />
+              </NavLink>
             </div>
-          </NavLink>
-          <div className="mt-2 mb-2">
-            <h1 className="text-3xl">
-              <strong>{name}</strong>
-            </h1>
+            <div className="mt-5 mb-2">
+              <h1 className="text-xl">
+                <strong>Gleison Ribeiro Gomes</strong>
+              </h1>
+            </div>
           </div>
-          <div className="w-80 rounded-lg bg-branco">
-            <TableNotes />
+          <div className="flex justify-center items-center w-80 rounded-lg bg-branco">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="text-center">
+                    <strong>Unidade</strong>
+                  </TableHead>
+                  <TableHead className="text-center">
+                    <strong>Nota</strong>
+                  </TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {notes.map((n) => (
+                  <TableNotes key={n.id} unit={n.unit} note={n.note} />
+                ))}
+              </TableBody>
+            </Table>
           </div>
         </div>
       </section>
