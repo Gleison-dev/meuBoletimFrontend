@@ -2,7 +2,8 @@ import Qualities from "../../components/Qualities/qualities";
 import icon_light from "../../assets/icon_light.svg";
 import icon_ray from "../../assets/icon_ray.svg";
 import icon_lock from "../../assets/icon_lock.svg";
-import "./styles.css"
+import "./styles.css";
+import { NavLink } from "react-router-dom";
 
 export default function Home() {
   return (
@@ -21,9 +22,11 @@ export default function Home() {
           </h1>
         </div>
         <div className="mt-8">
-          <button className="w-85 h-20 text-xl rounded-2xl cursor-pointer bg-azul text-branco">
-            SAIBA MAIS
-          </button>
+          <NavLink to="/login">
+            <button className="w-85 h-20 text-xl rounded-2xl cursor-pointer bg-azul text-branco">
+              SAIBA MAIS
+            </button>
+          </NavLink>
         </div>
         <div className="main-quality flex flex-col justify-center items-center rounded-md w-85 mt-8 bg-azul-claro">
           <Qualities
