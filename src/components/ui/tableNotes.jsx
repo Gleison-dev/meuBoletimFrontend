@@ -17,12 +17,16 @@ import {
 } from "@/components/ui/table";
 import { useNavigate } from "react-router-dom";
 import { DialogDemo } from "./dialogDemo";
+import { DialogEditNote } from "./dialogEditNote";
 
 export function TableNotes({ unit, note }) {
   return (
     <TableRow>
-      <TableCell className="text-center font-medium">{unit}ª unidade</TableCell>
-      <TableCell className="text-center font-medium">{note}</TableCell>
+      <TableCell className="font-medium">{unit}ª unidade</TableCell>
+      <TableCell>{note}</TableCell>
+      <TableCell className="text-right">
+        <DialogEditNote />
+      </TableCell>
     </TableRow>
   );
 }

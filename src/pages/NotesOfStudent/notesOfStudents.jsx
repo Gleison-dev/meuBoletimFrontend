@@ -76,22 +76,19 @@ export default function NotesOfStudent() {
                 />
               </NavLink>
             </div>
-            <div className="mt-5 mb-2">
+          </div>
+          <div className="flex flex-col justify-center p-2 mt-5 w-80 rounded-lg bg-branco">
+            <div className="pl-2 mt-2 mb-2">
               <h1 className="text-xl">
-                <strong>Gleison Ribeiro Gomes</strong>
+                <strong>{name}</strong>
               </h1>
             </div>
-          </div>
-          <div className="flex justify-center items-center w-80 rounded-lg bg-branco">
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="text-center">
-                    <strong>Unidade</strong>
-                  </TableHead>
-                  <TableHead className="text-center">
-                    <strong>Nota</strong>
-                  </TableHead>
+                  <TableHead>Unidade</TableHead>
+                  <TableHead>Nota</TableHead>
+                  <TableHead className="text-right">Ações</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
