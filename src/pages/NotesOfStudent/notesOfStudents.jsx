@@ -50,6 +50,7 @@ export default function NotesOfStudent() {
         },
       });
       setNotes(response.data.note);
+      console.log(response);
     } catch (error) {
       const message =
         error.response?.data?.message || "Erro ao listar a nota do estudante.";
@@ -93,7 +94,13 @@ export default function NotesOfStudent() {
               </TableHeader>
               <TableBody>
                 {notes.map((n) => (
-                  <TableNotes key={n.id} unit={n.unit} note={n.note} />
+                  <TableNotes
+                    key={n.id}
+                    id={n.id}
+                    unit={n.unit}
+                    note={n.note}
+                    studentId={n.studentId}
+                  />
                 ))}
               </TableBody>
             </Table>
