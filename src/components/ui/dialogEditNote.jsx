@@ -14,13 +14,22 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import icon_pencil from "../../assets/icon_pencil.svg";
 import { api } from "@/services/api";
+import { useContext, useState } from "react";
+import { AuthContext } from "@/context/AuthContext";
 
 export function DialogEditNote({ id, studentId }) {
+  const { token } = useContext(AuthContext);
+  const [unit, setUnit] = useState("");
+  const [note, setNote] = useState("");
+
   const handleEditNote = async () => {
     try {
       const response = await api.put(
         `/updateNote?id=${id}&studentId=${studentId}`,
-        data,
+        {
+          newUnit: unit,
+          newNote: note,
+        },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -56,11 +65,19 @@ export function DialogEditNote({ id, studentId }) {
           <FieldGroup>
             <Field>
               <Label htmlFor="name-1">Unidade</Label>
-              <Input placeholder="Insira a nova nota" />
+              <Input
+                value={unit}
+                onChange={(e) => setUnit(e.target.value)}
+                placeholder="Insira a nova nota"
+              />
             </Field>
             <Field>
               <Label htmlFor="username-1">Nota</Label>
-              <Input placeholder="Insira a nova nota" />
+              <Input
+                value={note}
+                onChange={(e) => setNote(e.target.value)}
+                placeholder="Insira a nova nota"
+              />
             </Field>
           </FieldGroup>
           <DialogFooter>
