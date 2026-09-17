@@ -50,7 +50,6 @@ export default function NotesOfStudent() {
         },
       });
       setNotes(response.data.note);
-      console.log(response);
     } catch (error) {
       const message =
         error.response?.data?.message || "Erro ao listar a nota do estudante.";
