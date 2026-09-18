@@ -17,13 +17,16 @@ import { api } from "@/services/api";
 import { useContext, useState } from "react";
 import { AuthContext } from "@/context/AuthContext";
 
-export function DialogEditNote({ id, studentId }) {
+export function DialogEditNote({ id, studentId, onNoteUpdate }) {
   const { token } = useContext(AuthContext);
   const [unit, setUnit] = useState("");
   const [note, setNote] = useState("");
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleEditNote = async () => {
     try {
+      setLoading(true);
       const response = await api.put(
         `/updateNote?id=${id}&studentId=${studentId}`,
         {
@@ -36,14 +39,17 @@ export function DialogEditNote({ id, studentId }) {
           },
         },
       );
-      console.log(response);
+      setLoading(false);
+      onNoteUpdate?.();
+      setOpen(false);
     } catch (error) {
+      setLoading(false);
       const message = error.response?.data?.message || "Erro ao editar a nota.";
       return console.error(message);
     }
   };
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <form>
         <DialogTrigger
           render={
@@ -82,7 +88,11 @@ export function DialogEditNote({ id, studentId }) {
           </FieldGroup>
           <DialogFooter>
             <DialogClose render={<Button variant="outline">Cancelar</Button>} />
-            <Button onClick={handleEditNote}>Salvar nota</Button>
+            {loading ? (
+              <Button onClick={handleEditNote}>Salvando...</Button>
+            ) : (
+              <Button onClick={handleEditNote}>Salvar nota</Button>
+            )}
           </DialogFooter>
         </DialogContent>
       </form>

@@ -99,6 +99,7 @@ export default function NotesOfStudent() {
                     unit={n.unit}
                     note={n.note}
                     studentId={n.studentId}
+                    onNoteUpdate={handleNote}
                   />
                 ))}
               </TableBody>
