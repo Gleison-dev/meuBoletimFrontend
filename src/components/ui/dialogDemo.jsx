@@ -20,9 +20,12 @@ export function DialogDemo({ studentId, disciplineId }) {
   const { token } = useContext(AuthContext);
   const [unit, setUnit] = useState("");
   const [note, setNote] = useState("");
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleNote = async () => {
     try {
+      setLoading(true);
       const response = await api.post(
         `/createNote?studentId=${studentId}&disciplineId=${disciplineId}`,
         {
@@ -35,8 +38,8 @@ export function DialogDemo({ studentId, disciplineId }) {
           },
         },
       );
-      console.log(response);
-      console.log(studentId, disciplineId);
+      setLoading(false);
+      setOpen(false);
     } catch (error) {
       const message = error.response?.data?.message || "Erro ao lançar a nota.";
       return console.error(message);
@@ -44,7 +47,7 @@ export function DialogDemo({ studentId, disciplineId }) {
   };
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <form>
         <DialogTrigger
           render={<Button variant="outline">Lançar nota</Button>}
@@ -77,7 +80,11 @@ export function DialogDemo({ studentId, disciplineId }) {
           </FieldGroup>
           <DialogFooter>
             <DialogClose render={<Button variant="outline">Cancelar</Button>} />
-            <Button onClick={handleNote}>Salvar nota</Button>
+            {loading ? (
+              <Button onClick={handleNote}>Salvando...</Button>
+            ) : (
+              <Button onClick={handleNote}>Salvar nota</Button>
+            )}
           </DialogFooter>
         </DialogContent>
       </form>
