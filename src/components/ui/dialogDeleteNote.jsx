@@ -13,10 +13,35 @@ import { Field, FieldGroup } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import icon_trash from "../../assets/icon_trash.svg";
+import { api } from "@/services/api";
+import { useState } from "react";
 
-export function DialogDeleteNote() {
+export function DialogDeleteNote({ id, studentId, onDeleteUpdate }) {
+  const [password, setPassword] = useState("");
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleDeleteNote = async () => {
+    try {
+      setLoading(true);
+      const response = await api.delete(
+        `/deleteNote?id=${id}&studentId=${studentId}`,
+        {
+          password,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      setLoading(false);
+      setOpen(false);
+      console.log(response);
+      onDeleteUpdate?.();
+    } catch (error) {}
+  };
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <form>
         <DialogTrigger
           render={
@@ -42,12 +67,27 @@ export function DialogDeleteNote() {
           <FieldGroup>
             <Field>
               <Label>Senha</Label>
-              <Input placeholder="Insira sua senha" />
+              <Input
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Insira sua senha"
+              />
             </Field>
           </FieldGroup>
           <DialogFooter>
             <DialogClose render={<Button variant="outline">Cancelar</Button>} />
-            <Button>Salvar nota</Button>
+            {loading ? (
+              <Button className="bg-red-500 hover:bg-red-700">
+                Excluindo...
+              </Button>
+            ) : (
+              <Button
+                onClick={handleDeleteNote}
+                className="bg-red-500 hover:bg-red-700"
+              >
+                Excluir nota
+              </Button>
+            )}
           </DialogFooter>
         </DialogContent>
       </form>

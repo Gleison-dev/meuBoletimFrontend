@@ -101,6 +101,7 @@ export default function NotesOfStudent() {
                     note={n.note}
                     studentId={n.studentId}
                     onNoteUpdate={handleNote}
+                    onDeleteUpdate={handleNote}
                   />
                 ))}
               </TableBody>

@@ -89,7 +89,7 @@ export function DialogEditNote({ id, studentId, onNoteUpdate }) {
           <DialogFooter>
             <DialogClose render={<Button variant="outline">Cancelar</Button>} />
             {loading ? (
-              <Button onClick={handleEditNote}>Salvando...</Button>
+              <Button>Salvando...</Button>
             ) : (
               <Button onClick={handleEditNote}>Salvar nota</Button>
             )}
