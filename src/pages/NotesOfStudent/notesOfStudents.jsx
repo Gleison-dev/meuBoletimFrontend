@@ -87,8 +87,9 @@ export default function NotesOfStudent() {
               <TableHeader>
                 <TableRow>
                   <TableHead>Unidade</TableHead>
-                  <TableHead>Nota</TableHead>
-                  <TableHead className="text-right">Ações</TableHead>
+                  <TableHead className="text-center">Nota</TableHead>
+                  <TableHead className="text-right">Editar</TableHead>
+                  <TableHead className="text-right">Excluir</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
