@@ -14,12 +14,15 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import icon_trash from "../../assets/icon_trash.svg";
 import { api } from "@/services/api";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "@/context/AuthContext";
 
 export function DialogDeleteNote({ id, studentId, onDeleteUpdate }) {
+  const { token } = useContext(AuthContext);
   const [password, setPassword] = useState("");
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleDeleteNote = async () => {
     try {
@@ -27,7 +30,7 @@ export function DialogDeleteNote({ id, studentId, onDeleteUpdate }) {
       const response = await api.delete(
         `/deleteNote?id=${id}&studentId=${studentId}`,
         {
-          password,
+          data: { password },
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -35,9 +38,16 @@ export function DialogDeleteNote({ id, studentId, onDeleteUpdate }) {
       );
       setLoading(false);
       setOpen(false);
-      console.log(response);
       onDeleteUpdate?.();
-    } catch (error) {}
+    } catch (error) {
+      setLoading(false);
+      const message =
+        error.response?.data?.message || "Erro ao deletar a nota.";
+      setMessage(message);
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+    }
   };
 
   return (
@@ -75,6 +85,9 @@ export function DialogDeleteNote({ id, studentId, onDeleteUpdate }) {
             </Field>
           </FieldGroup>
           <DialogFooter>
+            <p className="text-red-400">
+              <strong>{message}</strong>
+            </p>
             <DialogClose render={<Button variant="outline">Cancelar</Button>} />
             {loading ? (
               <Button className="bg-red-500 hover:bg-red-700">
