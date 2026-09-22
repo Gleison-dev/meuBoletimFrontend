@@ -2,6 +2,7 @@ import icon_instagram from "../../assets/icon_instagram.svg";
 import icon_whatsapp from "../../assets/icon_whatsapp.svg";
 import icon_email from "../../assets/icon_email.svg";
 import icon_phone from "../../assets/icon_phone.svg";
+import { NavLink } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -14,7 +15,9 @@ export default function Footer() {
                 <strong className="text-azul">Sobre nós</strong>
               </h1>
               <ul>
-                <li className="underline">Quem somos</li>
+                <NavLink to={"/aboutUs"}>
+                  <li className="underline">Quem somos</li>
+                </NavLink>
               </ul>
             </div>
             <div>
