@@ -12,6 +12,7 @@ import Footer from "./components/Footer/footer";
 import DashboardClass from "./pages/DashboardClass/dashboardClass";
 import DashboardAdmin from "./pages/DashboardAdmin/dashboardAdmin";
 import NotesOfStudent from "./pages/NotesOfStudent/notesOfStudents";
+import AboutUs from "./pages/AboutUs/aboutUs";
 
 export default function App() {
   return (
@@ -47,6 +48,7 @@ export default function App() {
                 path="/dashboardAdmin"
                 element={<DashboardAdmin />}
               ></Route>
+              <Route path="/aboutUs" element={<AboutUs />}></Route>
             </Route>
           </Routes>
         </main>
