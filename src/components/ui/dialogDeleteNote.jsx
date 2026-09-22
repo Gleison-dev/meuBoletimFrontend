@@ -78,6 +78,7 @@ export function DialogDeleteNote({ id, studentId, onDeleteUpdate }) {
             <Field>
               <Label>Senha</Label>
               <Input
+                type={"password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Insira sua senha"
