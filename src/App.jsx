@@ -25,6 +25,7 @@ export default function App() {
               <Route path="/" element={<Home />}></Route>
               <Route path="/login" element={<Login />}></Route>
               <Route path="/resetPassword" element={<ResetPassword />}></Route>
+              <Route path="/aboutUs" element={<AboutUs />}></Route>
             </Route>
             <Route element={<PrivateRoute />}>
               <Route
@@ -48,7 +49,6 @@ export default function App() {
                 path="/dashboardAdmin"
                 element={<DashboardAdmin />}
               ></Route>
-              <Route path="/aboutUs" element={<AboutUs />}></Route>
             </Route>
           </Routes>
         </main>
