@@ -8,12 +8,7 @@ import { NavLink } from "react-router-dom";
 export default function Home() {
   return (
     <>
-      <section className="px-10">
-        <div className="mt-10">
-          <p className="w-38 pl-3 rounded-full bg-azul-claro">
-            <strong>Sistema de Notas</strong>
-          </p>
-        </div>
+      <section className="flex flex-col justify-center items-center px-10">
         <div className="mt-5">
           <h1 className="text-3xl">
             <strong>Gerencie Suas Notas</strong> <br />
