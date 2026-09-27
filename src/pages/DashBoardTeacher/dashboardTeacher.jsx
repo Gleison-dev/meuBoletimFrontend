@@ -59,56 +59,58 @@ export default function DashboardTeacher() {
   return (
     <>
       <section className="flex justify-center items-center mt-10">
-        <div className="w-96 p-6 rounded-xl bg-azul-claro">
+        <div className="lg:w-250 w-96 p-6 rounded-xl bg-azul-claro">
           <div>
             <h1 className="text-2xl">
               Olá, <strong>{user?.name}</strong>
             </h1>
           </div>
-          <div className="p-4 mt-5 rounded-xl bg-branco">
-            <div>
-              <h1 className="text-xl">
-                <strong>Painel de Informações</strong>
-              </h1>
-            </div>
-            <div className="mt-2">
-              <div className="flex items-center gap-1">
-                <img src={icon_user} alt="Ícone de usuário" />
-                <p>{user?.name}</p>
+          <div className="lg:flex lg: justify-between">
+            <div className="lg:w-96 p-4 mt-5 rounded-xl bg-branco">
+              <div>
+                <h1 className="text-xl">
+                  <strong>Painel de Informações</strong>
+                </h1>
               </div>
-              <div className="flex items-center gap-1">
-                <img src={icon_class} alt="Ícone de usuário" />
-                {loading ? <p>Carregando...</p> : <p>{count} turmas</p>}
-              </div>
-              <div className="flex items-center gap-1">
-                <img src={icon_email} alt="Ícone de usuário" />
-                <p>{user?.email}</p>
+              <div className="mt-2">
+                <div className="flex items-center gap-1">
+                  <img src={icon_user} alt="Ícone de usuário" />
+                  <p>{user?.name}</p>
+                </div>
+                <div className="flex items-center gap-1">
+                  <img src={icon_class} alt="Ícone de usuário" />
+                  {loading ? <p>Carregando...</p> : <p>{count} turmas</p>}
+                </div>
+                <div className="flex items-center gap-1">
+                  <img src={icon_email} alt="Ícone de usuário" />
+                  <p>{user?.email}</p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="p-4 mt-5 rounded-xl bg-branco">
-            <div>
-              <h1 className="text-xl">
-                <strong>Minhas Turmas</strong>
-              </h1>
-            </div>
-            <div>
-              {loading ? (
-                <p>Carregando...</p>
-              ) : (
-                <>
-                  {classes.map((i) => (
-                    <TableActionsTeacher
-                      key={i.id}
-                      classId={i.classId}
-                      disciplineId={i.disciplineId}
-                      id={i.classId}
-                      turma={i.turma.name}
-                      discipline={i.disciplina.name}
-                    />
-                  ))}
-                </>
-              )}
+            <div className="lg:w-96 p-4 mt-5 rounded-xl bg-branco">
+              <div>
+                <h1 className="text-xl">
+                  <strong>Minhas Turmas</strong>
+                </h1>
+              </div>
+              <div>
+                {loading ? (
+                  <p>Carregando...</p>
+                ) : (
+                  <>
+                    {classes.map((i) => (
+                      <TableActionsTeacher
+                        key={i.id}
+                        classId={i.classId}
+                        disciplineId={i.disciplineId}
+                        id={i.classId}
+                        turma={i.turma.name}
+                        discipline={i.disciplina.name}
+                      />
+                    ))}
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>
