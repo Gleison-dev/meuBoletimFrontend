@@ -58,7 +58,7 @@ export default function DashboardTeacher() {
 
   return (
     <>
-      <section className="flex justify-center mt-10">
+      <section className="flex justify-center items-center mt-10">
         <div className="w-96 p-6 rounded-xl bg-azul-claro">
           <div>
             <h1 className="text-2xl">
