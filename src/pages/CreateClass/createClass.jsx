@@ -44,7 +44,7 @@ export default function CreateClass({ onClassCreated }) {
 
   return (
     <>
-      <section className="p-4 rounded-lg bg-branco">
+      <section className="lg:w-96 lg:h-65 p-4 rounded-lg bg-branco">
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-xl">

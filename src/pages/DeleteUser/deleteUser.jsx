@@ -41,7 +41,7 @@ export default function DeleteUser({ fetchUsers, users }) {
 
   return (
     <>
-      <section className="p-4 rounded-lg bg-branco">
+      <section className="lg:w-96 lg:h-75 p-4 rounded-lg bg-branco">
         <div>
           <h1 className="text-xl">
             <strong>Deletar usuário</strong>
@@ -66,7 +66,7 @@ export default function DeleteUser({ fetchUsers, users }) {
               placeholder="Insira a sua senha aqui."
             />
           </div>
-          <div className="flex justify-center">
+          <div>
             <button
               type="submit"
               className="w-80 h-12 rounded-md cursor-pointer text-xl text-branco bg-red-500 hover:bg-red-800"

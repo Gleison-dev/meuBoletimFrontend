@@ -43,7 +43,7 @@ export default function CreateDiscipline({ onUserCreated }) {
 
   return (
     <>
-      <section className="p-4 rounded-lg bg-branco">
+      <section className="lg:w-96 lg:h-60 p-4 rounded-lg bg-branco">
         <div className="flex flex-col gap-4">
           <div>
             <h1 className="text-xl">
@@ -66,7 +66,7 @@ export default function CreateDiscipline({ onUserCreated }) {
                 <strong>{status}</strong>
               </p>
             </div>
-            <div className="flex justify-center">
+            <div>
               {loading ? (
                 <button
                   disabled

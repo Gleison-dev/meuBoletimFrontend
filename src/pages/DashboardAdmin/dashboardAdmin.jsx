@@ -92,19 +92,11 @@ export default function DashboardAdmin() {
   return (
     <>
       <section className="flex flex-col justify-center items-center mt-10">
-        <div className="flex flex-col gap-10 w-96 p-4 rounded-xl bg-azul-claro">
+        <div className="lg:w-250 lg:grid lg:grid-cols-2 lg:gap-5 lg:p-8 flex flex-col gap-10 w-96 p-4 rounded-xl bg-azul-claro">
           <CreateUser
             onUserCreated={fetchStudents}
             onTeacherCreated={fetchTeachers}
           />
-          <CreateClass onClassCreated={fetchClasses} />
-          <EnrollStudent
-            students={students}
-            classes={classes}
-            fetchStudents={fetchStudents}
-            fetchClasses={fetchClasses}
-          />
-          <CreateDiscipline onUserCreated={fetchDisciplines} />
           <EnrollDisiciplineTeacher
             teachers={teachers}
             disciplines={disciplines}
@@ -114,6 +106,14 @@ export default function DashboardAdmin() {
             fetchClasses={fetchClasses}
           />
           <DeleteUser fetchUsers={fetchUsers} users={users} />
+          <EnrollStudent
+            students={students}
+            classes={classes}
+            fetchStudents={fetchStudents}
+            fetchClasses={fetchClasses}
+          />
+          <CreateClass onClassCreated={fetchClasses} />
+          <CreateDiscipline onUserCreated={fetchDisciplines} />
         </div>
       </section>
     </>

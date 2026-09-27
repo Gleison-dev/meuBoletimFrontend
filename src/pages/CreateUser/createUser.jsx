@@ -52,12 +52,9 @@ export default function CreateUser({ onUserCreated, onTeacherCreated }) {
 
   return (
     <>
-      <section>
+      <section className="lg:w-96">
         <div>
-          <div>
-            <h1 className="text-2xl">Olá, {user?.name}!</h1>
-          </div>
-          <div className="flex flex-col gap-4 p-4 mt-5 rounded-lg bg-branco">
+          <div className="flex flex-col gap-4 p-4 rounded-lg bg-branco">
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="text-xl">
@@ -120,7 +117,7 @@ export default function CreateUser({ onUserCreated, onTeacherCreated }) {
                 </p>
               </div>
             )}
-            <div className="flex justify-center">
+            <div>
               <button
                 onClick={handleCreateUser}
                 className="w-80 p-4 rounded-xl cursor-pointer text-xl bg-azul text-branco hover:bg-blue-800"

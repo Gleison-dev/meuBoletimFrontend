@@ -71,7 +71,7 @@ export default function EnrollDisiciplineTeacher({
 
   return (
     <>
-      <section className="p-4 rounded-md bg-branco">
+      <section className="lg:w-96 lg:h-110 p-4 rounded-md bg-branco">
         <div>
           <h1 className="text-xl">
             <strong>Disciplina + Professor + Turma</strong>
@@ -110,7 +110,7 @@ export default function EnrollDisiciplineTeacher({
               <strong>{status}</strong>
             </p>
           </div>
-          <div className="flex justify-center">
+          <div>
             <button
               type="submit"
               className="w-80 h-12 rounded-md text-xl text-branco bg-azul hover:bg-blue-800"

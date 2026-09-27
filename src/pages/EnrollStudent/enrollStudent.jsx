@@ -62,7 +62,7 @@ export default function EnrollStudent({
 
   return (
     <>
-      <section className="p-4 rounded-lg bg-branco">
+      <section className="lg:w-96 p-4 rounded-lg bg-branco">
         <div>
           <h1 className="text-xl">
             <strong>Matricular estudante na turma</strong>
@@ -92,7 +92,7 @@ export default function EnrollStudent({
               <strong>{status}</strong>
             </p>
           </div>
-          <div className="flex justify-center mt-2">
+          <div className="mt-5">
             {loading ? (
               <button
                 disabled
