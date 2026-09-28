@@ -69,63 +69,67 @@ export default function DashboardStudent() {
   return (
     <>
       <section className="flex justify-center items-center mt-10">
-        <div className="w-96 p-8 rounded-xl bg-azul-claro">
+        <div className="lg:w-250 w-96 p-8 rounded-xl bg-azul-claro">
           <div>
             <h1 className="text-2xl">
               Olá, <strong>{studentUser.usuario?.name}</strong>
             </h1>
           </div>
-          <div className="p-4 mt-10 rounded-xl border-2 border-azul bg-branco">
-            <div>
-              <h1 className="text-xl mb-3">
-                <strong>Informações do aluno(a)</strong>
-              </h1>
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <img src={icon_user} alt="Ícone de usuário" />
-                <h1>{studentUser.usuario?.name}</h1>
+          <div className="lg:flex lg:justify-between">
+            <div className="lg:w-96 p-4 mt-10 rounded-xl border-2 border-azul bg-branco">
+              <div>
+                <h1 className="text-xl mb-3">
+                  <strong>Informações do aluno(a)</strong>
+                </h1>
               </div>
-              <div className="flex items-center gap-2">
-                <img src={icon_class} alt="Ícone de usuário" />
-                <h1>{studentUser.turma?.name}</h1>
-              </div>
-              <div className="flex items-center gap-2">
-                <img src={icon_email} alt="Ícone de usuário" />
-                <h1>{studentUser.usuario?.email}</h1>
+              <div>
+                <div className="flex items-center gap-2">
+                  <img src={icon_user} alt="Ícone de usuário" />
+                  <h1>{studentUser.usuario?.name}</h1>
+                </div>
+                <div className="flex items-center gap-2">
+                  <img src={icon_class} alt="Ícone de usuário" />
+                  <h1>{studentUser.turma?.name}</h1>
+                </div>
+                <div className="flex items-center gap-2">
+                  <img src={icon_email} alt="Ícone de usuário" />
+                  <h1>{studentUser.usuario?.email}</h1>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="p-4 mt-10 rounded-xl border-2 border-azul bg-branco">
-            <div>
-              <h1 className="text-xl mb-3">Minhas Disciplinas</h1>
-            </div>
-            <div>
-              {loading ? (
-                <p>Carregando...</p>
-              ) : note && note.length > 0 ? (
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Disciplina</TableHead>
-                      <TableHead>Unidade</TableHead>
-                      <TableHead className="text-right">Notas</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {note.map((i) => (
-                      <TableActions
-                        key={i.id ?? `${i.disciplina.name}-${i.unit}`}
-                        discipline={i.disciplina.name}
-                        unit={i.unit}
-                        note={i.note}
-                      />
-                    ))}
-                  </TableBody>
-                </Table>
-              ) : (
-                <p>Nenhuma nota encontrada.</p>
-              )}
+            <div className="lg:w-96 p-4 mt-10 rounded-xl border-2 border-azul bg-branco">
+              <div>
+                <h1 className="text-xl mb-3">
+                  <strong>Minhas Disciplinas</strong>
+                </h1>
+              </div>
+              <div>
+                {loading ? (
+                  <p>Carregando...</p>
+                ) : note && note.length > 0 ? (
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Disciplina</TableHead>
+                        <TableHead className="text-center">Unidade</TableHead>
+                        <TableHead className="text-right">Notas</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {note.map((i) => (
+                        <TableActions
+                          key={i.id ?? `${i.disciplina.name}-${i.unit}`}
+                          discipline={i.disciplina.name}
+                          unit={i.unit}
+                          note={i.note}
+                        />
+                      ))}
+                    </TableBody>
+                  </Table>
+                ) : (
+                  <p>Nenhuma nota encontrada.</p>
+                )}
+              </div>
             </div>
           </div>
         </div>
