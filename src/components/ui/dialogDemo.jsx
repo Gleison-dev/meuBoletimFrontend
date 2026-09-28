@@ -49,7 +49,7 @@ export function DialogDemo({ studentId, disciplineId }) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <form>
-        <DialogTrigger
+        <DialogTrigger className="w-70"
           render={<Button variant="outline">Lançar nota</Button>}
         />
         <DialogContent className="sm:max-w-sm">

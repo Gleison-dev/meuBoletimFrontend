@@ -46,20 +46,22 @@ export default function DashboardClass() {
             <h1 className="text-3xl">Estudantes do 3º B</h1>
           </div>
           <div className="bg-branco rounded-xl p-4 mt-5">
-            {loading ? (
-              <p>Carregando...</p>
-            ) : (
-              <>
-                {students.map((i) => (
-                  <CardStudent
-                    key={i.id}
-                    id={i.id}
-                    name={i.usuario.name}
-                    disciplineId={disciplineId}
-                  />
-                ))}
-              </>
-            )}
+            <div className="flex flex-col gap-5">
+              {loading ? (
+                <p>Carregando...</p>
+              ) : (
+                <>
+                  {students.map((i) => (
+                    <CardStudent
+                      key={i.id}
+                      id={i.id}
+                      name={i.usuario.name}
+                      disciplineId={disciplineId}
+                    />
+                  ))}
+                </>
+              )}
+            </div>
           </div>
         </div>
       </section>
