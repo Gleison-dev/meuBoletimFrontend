@@ -91,8 +91,8 @@ export default function DashboardAdmin() {
 
   return (
     <>
-      <section className="flex flex-col justify-center items-center mt-10">
-        <div className="lg:w-250 lg:grid lg:grid-cols-2 lg:gap-5 lg:p-8 flex flex-col gap-10 w-96 p-4 rounded-xl bg-azul-claro">
+      <section className="flex justify-center mt-10">
+        <div className="flex flex-col lg:w-210 lg:grid lg:grid-cols-2 lg:gap-5 lg:p-8 gap-10 w-96 p-4 rounded-xl bg-azul-claro">
           <CreateUser
             onUserCreated={fetchStudents}
             onTeacherCreated={fetchTeachers}
