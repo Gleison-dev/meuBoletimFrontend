@@ -36,17 +36,17 @@ export default function DashboardClass() {
   return (
     <>
       <section className="flex justify-center">
-        <div className="w-96 mt-10 p-6 rounded-xl bg-azul-claro">
+        <div className="lg:w-250 w-96 mt-10 p-6 rounded-xl bg-azul-claro">
           <div>
             <NavLink to="/dashboardTeacher">
-              <img src={icon_arrow} alt="Ícone de seta para esquerda." />
+              <img className="hover:bg-branco rounded-full" src={icon_arrow} alt="Ícone de seta para esquerda." />
             </NavLink>
           </div>
           <div className="mt-3">
             <h1 className="text-3xl">Estudantes do 3º B</h1>
           </div>
           <div className="bg-branco rounded-xl p-4 mt-5">
-            <div className="flex flex-col gap-5">
+            <div className="lg:grid lg:grid-cols-3 flex flex-col gap-3">
               {loading ? (
                 <p>Carregando...</p>
               ) : (
