@@ -76,7 +76,7 @@ export default function DashboardStudent() {
             </h1>
           </div>
           <div className="lg:flex lg:justify-between">
-            <div className="lg:w-96 p-4 mt-10 rounded-xl border-2 border-azul bg-branco">
+            <div className="lg:w-96 lg:h-45 p-4 mt-10 rounded-xl border-2 border-azul bg-branco">
               <div>
                 <h1 className="text-xl mb-3">
                   <strong>Informações do aluno(a)</strong>
@@ -100,7 +100,7 @@ export default function DashboardStudent() {
             <div className="lg:w-96 p-4 mt-10 rounded-xl border-2 border-azul bg-branco">
               <div>
                 <h1 className="text-xl mb-3">
-                  <strong>Minhas Disciplinas</strong>
+                  <strong>Minhas Notas</strong>
                 </h1>
               </div>
               <div>
